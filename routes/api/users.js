@@ -3,6 +3,8 @@ const router = express.Router();
 const User = require('../../models/User');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const keys = require('../../config/keys');
 
 //@Route GET api/users/test
 //@Desc  Tests users route
@@ -62,7 +64,20 @@ router.post('/signin', (req, res) => {
         .compare(password, user.password)
         .then(isMatch => {
           if (isMatch) {
-            res.json({ msg: 'Success' });
+            //if user match create JWT Payload and sign token
+            const payload = {
+              id: user.id,
+              name: user.name,
+              avatar: user.avatar
+            };
+            jwt.sign(
+              payload,
+              keys.secretOrKey,
+              { expiresIn: 3600 },
+              (err, token) => {
+                res.json({ success: true, token: 'Bearer ' + token });
+              }
+            );
           } else {
             return res.status(404).json({ password: 'Password incorrect' });
           }
