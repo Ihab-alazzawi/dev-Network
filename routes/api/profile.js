@@ -5,6 +5,8 @@ const passport = require('passport');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const validateProfileInput = require('../../validation/profile');
+const validateExpInput = require('../../validation/experience');
+const validateEduInput = require('../../validation/education');
 
 //@Route GET api/profile/test
 //@Desc  Tests profile route
@@ -124,27 +126,106 @@ router.post(
     if (req.body.linkedin) profileFields.social.linkedin = req.body.linkedin;
     if (req.body.instagram) profileFields.social.instagram = req.body.instagram;
 
-    Profile.findOne({ user: req.body.id }).then(profile => {
-      if (profile) {
-        //Update profile
-        Profile.findOneAndUpdate(
-          { user: req.user.id },
-          { $set: profileFields },
-          { new: true }
-        ).then(profile => res.json(profile));
-      } else {
-        //Create profile
-        //check if handle exists
-        Profile.findOne({ handle: profileFields.handle }).then(profile => {
-          if (profile) {
-            errors.handle = 'That handle already exists';
-            res.status(400).json(errors);
-          }
-          //Save profile
-          new Profile(profileFields).save().then(profile => res.json(profile));
-        });
-      }
-    });
+    Profile.findOne({ user: req.body.id })
+      .then(profile => {
+        if (profile) {
+          //Update profile
+          Profile.findOneAndUpdate(
+            { user: req.user.id },
+            { $set: profileFields },
+            { new: true }
+          ).then(profile => res.json(profile));
+        } else {
+          //Create profile
+          //check if handle exists
+          Profile.findOne({ handle: profileFields.handle })
+            .then(profile => {
+              if (profile) {
+                errors.handle = 'That handle already exists';
+                res.status(400).json(errors);
+              }
+              //Save profile
+              new Profile(profileFields)
+                .save()
+                .then(profile => res.json(profile))
+                .catch(err => res.json(err));
+            })
+            .catch(err => res.json(err));
+        }
+      })
+      .catch(err => res.json(err));
+  }
+);
+
+//@Route POST api/profile/experience
+//@Desc  Add experience to profile
+//@Access Private
+
+router.post(
+  '/experience',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    const { isValid, errors } = validateExpInput(req.body);
+    //Check validation
+    if (!isValid) {
+      //return any errors with 400 status
+      return res.status(400).json(errors);
+    }
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        const newExp = {
+          title: req.body.title,
+          company: req.body.company,
+          location: req.body.location,
+          from: req.body.from,
+          to: req.body.to,
+          current: req.body.current,
+          description: req.body.description
+        };
+        //Add to exp array
+        profile.experience.unshift(newExp);
+        profile
+          .save()
+          .then(profile => res.json(profile))
+          .catch(err => res.json(err));
+      })
+      .catch(err => res.json(err));
+  }
+);
+
+//@Route POST api/profile/education
+//@Desc  Add education to profile
+//@Access Private
+
+router.post(
+  '/education',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    const { isValid, errors } = validateEduInput(req.body);
+    //Check validation
+    if (!isValid) {
+      //return any errors with 400 status
+      return res.status(400).json(errors);
+    }
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        const newEdu = {
+          school: req.body.school,
+          degree: req.body.degree,
+          fieldofstudy: req.body.fieldofstudy,
+          from: req.body.from,
+          to: req.body.to,
+          current: req.body.current,
+          description: req.body.description
+        };
+        //Add to Edu array
+        profile.education.unshift(newEdu);
+        profile
+          .save()
+          .then(profile => res.json(profile))
+          .catch(err => res.json(err));
+      })
+      .catch(err => res.json(err));
   }
 );
 
