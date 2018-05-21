@@ -1,11 +1,12 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8000;
 const mongoose = require('mongoose');
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 
 //bodyParser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,7 +22,11 @@ mongoose
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
-app.get('/', (req, res) => res.send('Hello from backend'));
+//Passport middleware
+app.use(passport.initialize());
+
+//Passport Config
+require('./config/passport')(passport);
 
 //Use Routes
 app.use('/api/users', users);
