@@ -197,14 +197,6 @@ router.post(
 //@Desc  Delete experience from profile
 //@Access Private
 
-router.delete(
-  '/experience/:exp_id',
-  passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    Profile.findOneAndRemove(req.params.id).then(profile => res.json(profile));
-  }
-);
-
 //@Route POST api/profile/education
 //@Desc  Add education to profile
 //@Access Private
