@@ -1,4 +1,4 @@
-const validator = require('validator');
+const Validator = require('validator');
 const isEmpty = require('./is-empty');
 
 module.exports = function validateSigninInput(data) {
@@ -7,17 +7,16 @@ module.exports = function validateSigninInput(data) {
   data.email = !isEmpty(data.email) ? data.email : '';
   data.password = !isEmpty(data.password) ? data.password : '';
 
-  //Email validation
-  if (!validator.isEmail(data.email)) {
+  if (!Validator.isEmail(data.email)) {
     errors.email = 'Email is invalid';
   }
-  if (validator.isEmpty(data.email)) {
+
+  if (Validator.isEmpty(data.email)) {
     errors.email = 'Email field is required';
   }
-  //Password validation
-  if (validator.isEmpty(data.password)) {
+
+  if (Validator.isEmpty(data.password)) {
     errors.password = 'Password field is required';
-    console.log(data.password);
   }
 
   return {
