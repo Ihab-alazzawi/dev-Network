@@ -206,15 +206,15 @@ router.post(
 //   '/comment/:id/:comment_id',
 //   passport.authenticate('jwt', { session: false }),
 //   (req, res) => {
-//     const updatedComment = {
-//       text: req.body.text,
-//       name: req.body.name,
-//       avatar: req.body.avatar,
-//       user: req.user.id,
-//       updatedAt: Date.now()
-//     };
+// const updatedComment = {
+//   text: req.body.text,
+//   name: req.body.name,
+//   avatar: req.body.avatar,
+//   user: req.user.id,
+//   updatedAt: Date.now()
+// };
 
-//     Post.findOneAndUpdate({ _id: req.params.comment_id }, updatedComment, {
+//     Post.findByIdAndUpdate({_id:req.params.comment_id}, req.body, {
 //       new: true
 //     })
 //       .then(post => res.json(post))
