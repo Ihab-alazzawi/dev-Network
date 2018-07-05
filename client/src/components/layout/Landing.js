@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Codemp4 from '../../img/Love-Coding.mp4';
 import Codeogv from '../../img/Love-Coding.ogv';
 import Codewebm from '../../img/Love-Coding.webm';
@@ -23,12 +24,12 @@ class Landing extends Component {
                   from other developers
                 </p>
                 <hr />
-                <a href="signup.html" className="btn btn-lg btn-info mr-2">
+                <Link to="/signup" className="btn btn-lg btn-info mr-2">
                   Sign Up
-                </a>
-                <a href="signin.html" className="btn btn-lg btn-light">
+                </Link>
+                <Link to="/signin" className="btn btn-lg btn-light">
                   Signin
-                </a>
+                </Link>
               </div>
             </div>
           </div>

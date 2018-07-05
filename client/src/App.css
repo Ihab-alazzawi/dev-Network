@@ -48,3 +48,15 @@ img {
 .form-control::placeholder {
   color: #bbb !important;
 }
+
+.signup {
+  margin-top: 10%;
+}
+
+.signin {
+  margin-top: 10%;
+}
+
+.display-3 {
+  padding-top: 10%;
+}
