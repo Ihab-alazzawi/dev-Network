@@ -40,7 +40,6 @@ export class Signup extends Component {
       password: this.state.password,
       password2: this.state.password2
     };
-    console.log(newUser);
 
     this.props.signUpUser(newUser, this.props.history);
   }
