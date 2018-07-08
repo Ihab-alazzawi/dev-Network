@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import Codemp4 from '../../img/Love-Coding.mp4';
 import Codeogv from '../../img/Love-Coding.ogv';
 import Codewebm from '../../img/Love-Coding.webm';
 
 class Landing extends Component {
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/dashboard');
+    }
+  }
+
   render() {
     return (
       <div className="landing">
@@ -38,5 +47,11 @@ class Landing extends Component {
     );
   }
 }
+Landing.propTypes = {
+  auth: PropTypes.object.isRequired
+};
+const mapStateToProps = state => ({
+  auth: state.auth
+});
 
-export default Landing;
+export default connect(mapStateToProps)(Landing);
