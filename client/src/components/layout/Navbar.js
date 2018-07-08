@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { signOutUser } from '../../actions/authActions';
@@ -8,6 +8,7 @@ class Navbar extends Component {
   signOutHandle(e) {
     e.preventDefault();
     this.props.signOutUser();
+    this.props.history.push('/signin');
   }
 
   render() {
@@ -97,4 +98,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { signOutUser }
-)(Navbar);
+)(withRouter(Navbar));
