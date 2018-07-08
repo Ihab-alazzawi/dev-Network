@@ -1,8 +1,58 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { signOutUser } from '../../actions/authActions';
 
 class Navbar extends Component {
+  signOutHandle(e) {
+    e.preventDefault();
+    this.props.signOutUser();
+  }
+
   render() {
+    const { isAuthenticated, user } = this.props.auth;
+    //for signed in users
+    const authLinks = (
+      <ul className="navbar-nav ml-auto">
+        <li className="nav-item">
+          <a
+            href="/"
+            onClick={this.signOutHandle.bind(this)}
+            className="nav-link"
+          >
+            <img
+              src={user.avatar}
+              alt={user.name}
+              style={{
+                width: '25px',
+                marginRight: '5px',
+                borderRadius: '25px'
+              }}
+              title="You must have a Gravatar connected to your email to display an image"
+            />
+            Sign Out
+          </a>
+        </li>
+      </ul>
+    );
+
+    //for new users
+    const guestLinks = (
+      <ul className="navbar-nav ml-auto">
+        <li className="nav-item">
+          <Link className="nav-link" to="/signup">
+            Sign Up
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/signin">
+            Sign in
+          </Link>
+        </li>
+      </ul>
+    );
+
     return (
       <nav className="navbar navbar-expand-sm navbar-dark bg-info mb-4 fixed-top">
         <div className="container">
@@ -27,19 +77,7 @@ class Navbar extends Component {
                 </Link>
               </li>
             </ul>
-
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to="/signup">
-                  Sign Up
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/signin">
-                  Sign in
-                </Link>
-              </li>
-            </ul>
+            {isAuthenticated ? authLinks : guestLinks}
           </div>
         </div>
       </nav>
@@ -47,4 +85,16 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+Navbar.propTypes = {
+  signOutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { signOutUser }
+)(Navbar);
