@@ -11,6 +11,7 @@ import Footer from './components/layout/Footer';
 import Signup from './components/auth/Signup';
 import Signin from './components/auth/Signin';
 import Dashboard from './components/dashboard/Dashboard';
+import CreateProfile from './components/create-profile/CreateProfile';
 import PrivateRoute from './components/common/PrivateRoute';
 import './App.css';
 import { clearCurrentProfile } from './actions/profileActions';
@@ -48,6 +49,13 @@ class App extends Component {
               <Route exact path="/signin" component={Signin} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/create-profile"
+                  component={CreateProfile}
+                />
               </Switch>
             </div>
             <Footer />
