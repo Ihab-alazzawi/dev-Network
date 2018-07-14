@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Inputs from '../common/Inputs';
+import InputLinks from '../common/InputLinks';
+import TextArea from '../common/TextArea';
+import SelectList from '../common/SelectList';
 
 class CreateProfile extends Component {
   constructor(props) {
