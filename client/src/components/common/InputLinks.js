@@ -37,7 +37,6 @@ InputLinks.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  value: PropTypes.string.isRequired,
   error: PropTypes.string,
   icon: PropTypes.string,
   onChange: PropTypes.func.isRequired
@@ -46,4 +45,4 @@ InputLinks.propTypes = {
 InputLinks.defaultProps = {
   type: 'text'
 };
-export default TextArea;
+export default InputLinks;

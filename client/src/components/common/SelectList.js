@@ -12,7 +12,6 @@ const SelectList = ({ name, value, error, info, onChange, options }) => {
   return (
     <div className="form-group">
       <select
-        type={type}
         className={classnames('form-control form-control-lg', {
           'is-invalid': error
         })}
@@ -37,4 +36,4 @@ SelectList.propTypes = {
   options: PropTypes.array.isRequired
 };
 
-export default TextArea;
+export default SelectList;
