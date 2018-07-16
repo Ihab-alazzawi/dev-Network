@@ -11,11 +11,12 @@ import Footer from './components/layout/Footer';
 import Signup from './components/auth/Signup';
 import Signin from './components/auth/Signin';
 import Dashboard from './components/dashboard/Dashboard';
-import CreateProfile from './components/create-profile/CreateProfile';
-import EditProfile from './components/edit-profile/EditProfile';
+import CreateProfile from './components/CreateProfile';
+import EditProfile from './components/EditProfile';
 import PrivateRoute from './components/common/PrivateRoute';
 import './App.css';
 import { clearCurrentProfile } from './actions/profileActions';
+import AddExperience from './components/AddExperience';
 
 //check for token
 if (localStorage.jwtToken) {
@@ -63,6 +64,13 @@ class App extends Component {
                   exact
                   path="/edit-profile"
                   component={EditProfile}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/add-experience"
+                  component={AddExperience}
                 />
               </Switch>
             </div>
