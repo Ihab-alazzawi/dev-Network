@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { getCurrentProfile, deleteAccount } from '../../actions/profileActions';
 import Spinner from '../common/Spinner';
 import ProfileButtons from '../dashboard/ProfileButtons';
+import Experience from '../dashboard/Experience';
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -27,6 +28,8 @@ class Dashboard extends Component {
             Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
           </p>
           <ProfileButtons />
+          <Experience experienceArray={profile.experience} />
+          <div style={{ marginBottom: '60px' }} />
           <button
             onClick={this.deleteHandle.bind(this)}
             className="btn btn-danger"
