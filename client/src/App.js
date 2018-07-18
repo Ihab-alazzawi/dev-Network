@@ -18,7 +18,7 @@ import './App.css';
 import { clearCurrentProfile } from './actions/profileActions';
 import AddExperience from './components/AddExperience';
 import AddEducation from './components/AddEducation';
-
+import Profiles from './components/profiles/Profiles';
 //check for token
 if (localStorage.jwtToken) {
   //set auth token header auth
@@ -50,6 +50,7 @@ class App extends Component {
             <div className="container">
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/signin" component={Signin} />
+              <Route exact path="/profiles" component={Profiles} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
