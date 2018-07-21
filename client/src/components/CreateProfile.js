@@ -56,6 +56,25 @@ class CreateProfile extends Component {
       youtube: this.state.youtube,
       instagram: this.state.instagram
     };
+    //adding http if not exists
+    if (!/^(f|ht)tps?:\/\//i.test(profileData.website)) {
+      profileData.website = `http://${profileData.website}`;
+    }
+    if (!/^(f|ht)tps?:\/\//i.test(profileData.twitter)) {
+      profileData.twitter = `http://${profileData.twitter}`;
+    }
+    if (!/^(f|ht)tps?:\/\//i.test(profileData.facebook)) {
+      profileData.facebook = `http://${profileData.facebook}`;
+    }
+    if (!/^(f|ht)tps?:\/\//i.test(profileData.linkedin)) {
+      profileData.linkedin = `http://${profileData.linkedin}`;
+    }
+    if (!/^(f|ht)tps?:\/\//i.test(profileData.youtube)) {
+      profileData.youtube = `http://${profileData.youtube}`;
+    }
+    if (!/^(f|ht)tps?:\/\//i.test(profileData.instagram)) {
+      profileData.instagram = `http://${profileData.instagram}`;
+    }
 
     this.props.createProfile(profileData, this.props.history);
   }
