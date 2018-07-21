@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import isEmpty from '../../validation/is-empty';
 
 const ProfileHeader = props => {
@@ -89,4 +90,7 @@ const ProfileHeader = props => {
   );
 };
 
+ProfileHeader.propTypes = {
+  profile: PropTypes.object.isRequired
+};
 export default ProfileHeader;
