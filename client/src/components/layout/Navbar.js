@@ -10,6 +10,7 @@ class Navbar extends Component {
     e.preventDefault();
     this.props.clearCurrentProfile();
     this.props.signOutUser();
+    this.props.history.push('/signin');
   }
 
   render() {
