@@ -7,6 +7,7 @@ import InputLinks from '../components/common/InputLinks';
 import TextArea from '../components/common/TextArea';
 import SelectList from '../components/common/SelectList';
 import { createProfile } from '../actions/profileActions';
+import isEmpty from '../validation/is-empty';
 
 class CreateProfile extends Component {
   constructor(props) {
@@ -57,23 +58,41 @@ class CreateProfile extends Component {
       instagram: this.state.instagram
     };
     //adding http if not exists
-    if (!/^(f|ht)tps?:\/\//i.test(profileData.website)) {
+    if (
+      !isEmpty(profileData.website) &&
+      !/^(f|ht)tps?:\/\//i.test(profileData.website)
+    ) {
       profileData.website = `http://${profileData.website}`;
     }
-    if (!/^(f|ht)tps?:\/\//i.test(profileData.twitter)) {
-      profileData.twitter = `http://${profileData.twitter}`;
+    if (
+      !isEmpty(profileData.twitter) &&
+      !/^(f|ht)tps?:\/\//i.test(profileData.twitter)
+    ) {
+      profileData.twitter = `https://${profileData.twitter}`;
     }
-    if (!/^(f|ht)tps?:\/\//i.test(profileData.facebook)) {
-      profileData.facebook = `http://${profileData.facebook}`;
+    if (
+      !isEmpty(profileData.facebook) &&
+      !/^(f|ht)tps?:\/\//i.test(profileData.facebook)
+    ) {
+      profileData.facebook = `https://${profileData.facebook}`;
     }
-    if (!/^(f|ht)tps?:\/\//i.test(profileData.linkedin)) {
-      profileData.linkedin = `http://${profileData.linkedin}`;
+    if (
+      !isEmpty(profileData.linkedin) &&
+      !/^(f|ht)tps?:\/\//i.test(profileData.linkedin)
+    ) {
+      profileData.linkedin = `https://${profileData.linkedin}`;
     }
-    if (!/^(f|ht)tps?:\/\//i.test(profileData.youtube)) {
-      profileData.youtube = `http://${profileData.youtube}`;
+    if (
+      !isEmpty(profileData.youtube) &&
+      !/^(f|ht)tps?:\/\//i.test(profileData.youtube)
+    ) {
+      profileData.youtube = `https://${profileData.youtube}`;
     }
-    if (!/^(f|ht)tps?:\/\//i.test(profileData.instagram)) {
-      profileData.instagram = `http://${profileData.instagram}`;
+    if (
+      !isEmpty(profileData.instagram) &&
+      !/^(f|ht)tps?:\/\//i.test(profileData.instagram)
+    ) {
+      profileData.instagram = `https://${profileData.instagram}`;
     }
 
     this.props.createProfile(profileData, this.props.history);
