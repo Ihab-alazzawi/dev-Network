@@ -16,6 +16,12 @@ class ShowProfile extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.profile.profile === null && this.props.profile.loading) {
+      this.props.history.push('/404');
+    }
+  }
+
   render() {
     const { profile, loading } = this.props.profile;
     let profileContent;
