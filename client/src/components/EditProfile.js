@@ -20,7 +20,7 @@ class EditProfile extends Component {
       location: '',
       status: '',
       skills: '',
-      githubuser: '',
+      githubusername: '',
       bio: '',
       twitter: '',
       facebook: '',
@@ -53,8 +53,8 @@ class EditProfile extends Component {
       profile.company = !isEmpty(profile.company) ? profile.company : '';
       profile.website = !isEmpty(profile.website) ? profile.website : '';
       profile.location = !isEmpty(profile.location) ? profile.location : '';
-      profile.githubuser = !isEmpty(profile.githubuser)
-        ? profile.githubuser
+      profile.githubusername = !isEmpty(profile.githubusername)
+        ? profile.githubusername
         : '';
       profile.bio = !isEmpty(profile.bio) ? profile.bio : '';
       profile.social = !isEmpty(profile.social) ? profile.social : {};
@@ -82,7 +82,7 @@ class EditProfile extends Component {
         location: profile.location,
         status: profile.status,
         skills: skillsCSV,
-        githubuser: profile.githubuser,
+        githubusername: profile.githubusername,
         bio: profile.bio,
         twitter: profile.twitter,
         facebook: profile.facebook,
@@ -103,7 +103,7 @@ class EditProfile extends Component {
       location: this.state.location,
       status: this.state.status,
       skills: this.state.skills,
-      githubuser: this.state.githubuser,
+      githubusername: this.state.githubusername,
       bio: this.state.bio,
       twitter: this.state.twitter,
       facebook: this.state.facebook,
@@ -289,10 +289,10 @@ class EditProfile extends Component {
                 />
                 <Inputs
                   placeholder="Github Username"
-                  name="githubuser"
-                  value={this.state.githubuser}
+                  name="githubusername"
+                  value={this.state.githubusername}
                   onChange={this.onChange}
-                  error={errors.githubuser}
+                  error={errors.githubusername}
                   info="If you want your latest repos and a Github link, include your username"
                 />
                 <TextArea

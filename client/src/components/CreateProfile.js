@@ -20,7 +20,7 @@ class CreateProfile extends Component {
       location: '',
       status: '',
       skills: '',
-      githubuser: '',
+      githubusername: '',
       bio: '',
       twitter: '',
       facebook: '',
@@ -49,7 +49,7 @@ class CreateProfile extends Component {
       location: this.state.location,
       status: this.state.status,
       skills: this.state.skills,
-      githubuser: this.state.githubuser,
+      githubusername: this.state.githubusername,
       bio: this.state.bio,
       twitter: this.state.twitter,
       facebook: this.state.facebook,
@@ -225,10 +225,10 @@ class CreateProfile extends Component {
                 />
                 <Inputs
                   placeholder="Github Username"
-                  name="github"
-                  value={this.state.github}
+                  name="githubusername"
+                  value={this.state.githubusername}
                   onChange={this.onChange}
-                  error={errors.github}
+                  error={errors.githubusername}
                   info="if you want your latest repos and a Github link, include your username"
                 />
                 <TextArea
