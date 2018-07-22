@@ -30,8 +30,8 @@ class EditProfile extends Component {
       errors: {}
     };
 
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -93,7 +93,7 @@ class EditProfile extends Component {
     }
   }
 
-  onSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
 
     const profileData = {
@@ -153,7 +153,7 @@ class EditProfile extends Component {
     this.props.createProfile(profileData, this.props.history);
   }
 
-  onChange(e) {
+  handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
@@ -170,7 +170,7 @@ class EditProfile extends Component {
             name="twitter"
             icon="fab fa-twitter"
             value={this.state.twitter}
-            onChange={this.onChange}
+            onChange={this.handleChange}
             error={errors.twitter}
           />
 
@@ -179,7 +179,7 @@ class EditProfile extends Component {
             name="facebook"
             icon="fab fa-facebook"
             value={this.state.facebook}
-            onChange={this.onChange}
+            onChange={this.handleChange}
             error={errors.facebook}
           />
 
@@ -188,7 +188,7 @@ class EditProfile extends Component {
             name="linkedin"
             icon="fab fa-linkedin"
             value={this.state.linkedin}
-            onChange={this.onChange}
+            onChange={this.handleChange}
             error={errors.linkedin}
           />
 
@@ -197,7 +197,7 @@ class EditProfile extends Component {
             name="youtube"
             icon="fab fa-youtube"
             value={this.state.youtube}
-            onChange={this.onChange}
+            onChange={this.handleChange}
             error={errors.youtube}
           />
 
@@ -206,7 +206,7 @@ class EditProfile extends Component {
             name="instagram"
             icon="fab fa-instagram"
             value={this.state.instagram}
-            onChange={this.onChange}
+            onChange={this.handleChange}
             error={errors.instagram}
           />
         </div>
@@ -236,12 +236,12 @@ class EditProfile extends Component {
               </Link>
               <h1 className="display-4 text-center">Edit Profile</h1>
               <small className="d-block pb-3">* = required fields</small>
-              <form onSubmit={this.onSubmit}>
+              <form onSubmit={this.handleSubmit}>
                 <Inputs
                   placeholder="* Profile Handle"
                   name="handle"
                   value={this.state.handle}
-                  onChange={this.onChange}
+                  onChange={this.handleChange}
                   error={errors.handle}
                   info="A unique handle for your profile URL. Your full name, company name, nickname"
                 />
@@ -249,7 +249,7 @@ class EditProfile extends Component {
                   placeholder="Status"
                   name="status"
                   value={this.state.status}
-                  onChange={this.onChange}
+                  onChange={this.handleChange}
                   options={options}
                   error={errors.status}
                   info="Give us an idea of where you are at in your career"
@@ -258,7 +258,7 @@ class EditProfile extends Component {
                   placeholder="Company"
                   name="company"
                   value={this.state.company}
-                  onChange={this.onChange}
+                  onChange={this.handleChange}
                   error={errors.company}
                   info="Could be your own company or one you work for"
                 />
@@ -266,7 +266,7 @@ class EditProfile extends Component {
                   placeholder="Website"
                   name="website"
                   value={this.state.website}
-                  onChange={this.onChange}
+                  onChange={this.handleChange}
                   error={errors.website}
                   info="Could be your own website or a company one"
                 />
@@ -274,7 +274,7 @@ class EditProfile extends Component {
                   placeholder="Location"
                   name="location"
                   value={this.state.location}
-                  onChange={this.onChange}
+                  onChange={this.handleChange}
                   error={errors.location}
                   info="City or city & state suggested (eg. Boston, MA)"
                 />
@@ -282,7 +282,7 @@ class EditProfile extends Component {
                   placeholder="* Skills"
                   name="skills"
                   value={this.state.skills}
-                  onChange={this.onChange}
+                  onChange={this.handleChange}
                   error={errors.skills}
                   info="Please use comma separated values (eg.
                     HTML,CSS,JavaScript,PHP"
@@ -291,7 +291,7 @@ class EditProfile extends Component {
                   placeholder="Github Username"
                   name="githubusername"
                   value={this.state.githubusername}
-                  onChange={this.onChange}
+                  onChange={this.handleChange}
                   error={errors.githubusername}
                   info="If you want your latest repos and a Github link, include your username"
                 />
@@ -299,7 +299,7 @@ class EditProfile extends Component {
                   placeholder="Short Bio"
                   name="bio"
                   value={this.state.bio}
-                  onChange={this.onChange}
+                  onChange={this.handleChange}
                   error={errors.bio}
                   info="Tell us a little about yourself"
                 />

@@ -30,8 +30,8 @@ class CreateProfile extends Component {
       errors: {}
     };
 
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onChange = this.onChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -40,7 +40,7 @@ class CreateProfile extends Component {
     }
   }
 
-  onSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
     const profileData = {
       handle: this.state.handle,
@@ -97,7 +97,7 @@ class CreateProfile extends Component {
 
     this.props.createProfile(profileData, this.props.history);
   }
-  onChange(e) {
+  handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
@@ -112,7 +112,7 @@ class CreateProfile extends Component {
             name="facebook"
             icon="fab fa-facebook"
             value={this.state.value}
-            onChange={this.onChange}
+            onChange={this.handleChange}
             error={errors.facebook}
           />
           <InputLinks
@@ -120,7 +120,7 @@ class CreateProfile extends Component {
             name="twitter"
             icon="fab fa-twitter"
             value={this.state.value}
-            onChange={this.onChange}
+            onChange={this.handleChange}
             error={errors.twitter}
           />
           <InputLinks
@@ -128,7 +128,7 @@ class CreateProfile extends Component {
             name="linkedin"
             icon="fab fa-linkedin"
             value={this.state.value}
-            onChange={this.onChange}
+            onChange={this.handleChange}
             error={errors.linkedin}
           />
           <InputLinks
@@ -136,7 +136,7 @@ class CreateProfile extends Component {
             name="youtube"
             icon="fab fa-youtube"
             value={this.state.value}
-            onChange={this.onChange}
+            onChange={this.handleChange}
             error={errors.youtube}
           />
           <InputLinks
@@ -144,7 +144,7 @@ class CreateProfile extends Component {
             name="instagram"
             icon="fab fa-instagram"
             value={this.state.value}
-            onChange={this.onChange}
+            onChange={this.handleChange}
             error={errors.instagram}
           />
         </div>
@@ -173,12 +173,12 @@ class CreateProfile extends Component {
                 Let's get some information to make your profile stand out
               </p>
               <small className="d-block pb-3">* = required fields</small>
-              <form onSubmit={this.onSubmit}>
+              <form onSubmit={this.handleSubmit}>
                 <Inputs
                   placeholder="* Profile Handle"
                   name="handle"
                   value={this.state.handle}
-                  onChange={this.onChange}
+                  onChange={this.handleChange}
                   error={errors.handle}
                   info="A unique handle for your profile URL. Your full name, company name, nickname"
                 />
@@ -187,7 +187,7 @@ class CreateProfile extends Component {
                   name="status"
                   value={this.state.status}
                   options={options}
-                  onChange={this.onChange}
+                  onChange={this.handleChange}
                   error={errors.status}
                   info="Give us an idea of where you are at in your career"
                 />
@@ -195,7 +195,7 @@ class CreateProfile extends Component {
                   placeholder="Company"
                   name="company"
                   value={this.state.company}
-                  onChange={this.onChange}
+                  onChange={this.handleChange}
                   error={errors.company}
                   info="Could be your own company or one you work for"
                 />
@@ -203,7 +203,7 @@ class CreateProfile extends Component {
                   placeholder="Website"
                   name="website"
                   value={this.state.website}
-                  onChange={this.onChange}
+                  onChange={this.handleChange}
                   error={errors.website}
                   info="Could be your own website or a company website"
                 />
@@ -211,7 +211,7 @@ class CreateProfile extends Component {
                   placeholder="Location"
                   name="location"
                   value={this.state.location}
-                  onChange={this.onChange}
+                  onChange={this.handleChange}
                   error={errors.location}
                   info="City or city & state suggested (eg. Austin, TX)"
                 />
@@ -219,7 +219,7 @@ class CreateProfile extends Component {
                   placeholder="* Skills"
                   name="skills"
                   value={this.state.skills}
-                  onChange={this.onChange}
+                  onChange={this.handleChange}
                   error={errors.skills}
                   info="Please use comma separated values (eg. HTML,CSS,JavaScript)"
                 />
@@ -227,7 +227,7 @@ class CreateProfile extends Component {
                   placeholder="Github Username"
                   name="githubusername"
                   value={this.state.githubusername}
-                  onChange={this.onChange}
+                  onChange={this.handleChange}
                   error={errors.githubusername}
                   info="if you want your latest repos and a Github link, include your username"
                 />
@@ -235,7 +235,7 @@ class CreateProfile extends Component {
                   placeholder="Short Bio"
                   name="bio"
                   value={this.state.bio}
-                  onChange={this.onChange}
+                  onChange={this.handleChange}
                   error={errors.bio}
                   info="Tell us a little about yourself"
                 />
