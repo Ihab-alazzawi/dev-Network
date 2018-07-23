@@ -51,6 +51,7 @@ router.post(
     }
 
     const newPost = new Post({
+      subject: req.body.subject,
       text: req.body.text,
       name: req.body.name,
       avatar: req.body.avatar,
