@@ -3,9 +3,9 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 const Inputs = ({
-  name,
+  name = '',
   placeholder,
-  value,
+  value = '',
   error,
   info,
   type,

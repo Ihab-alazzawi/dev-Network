@@ -23,10 +23,13 @@ const TextArea = ({ name, placeholder, value, error, info, onChange }) => {
 TextArea.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  value: PropTypes.string.isRequired,
   error: PropTypes.string,
   info: PropTypes.string,
   onChange: PropTypes.func.isRequired
+};
+
+TextArea.defaultProps = {
+  type: 'text'
 };
 
 export default TextArea;
