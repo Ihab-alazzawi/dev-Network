@@ -62,6 +62,16 @@ router.post(
   }
 );
 
+// @route   GET api/posts/:id/edit
+// @desc    Edit post
+// @access  Private
+
+router.get('/:id/edit', (req, res) => {
+  Post.findById(req.params.id)
+    .then(post => res.json(post))
+    .catch(err => res.status(400).json({ postNotFound: 'Post not found' }));
+});
+
 // @route   PUT api/posts/:id
 // @desc    Update post
 // @access  Private
@@ -74,7 +84,7 @@ router.put(
       .then(post => {
         res.json(post);
       })
-      .catch(err => res.status(404).json({ postNotFound: 'Post Not Found' }));
+      .catch(err => res.status(400).json({ postNotFound: 'Post Not Found' }));
   }
 );
 

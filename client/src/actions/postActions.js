@@ -5,7 +5,8 @@ import {
   POST_LOADING,
   GET_POSTS,
   DELETE_POST,
-  GET_POST
+  GET_POST,
+  EDIT_POST
 } from './types';
 
 //Get post
@@ -53,6 +54,24 @@ export const addPost = postData => dispatch => {
     .then(res =>
       dispatch({
         type: ADD_POST,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+//Edit post
+export const editPost = id => dispatch => {
+  dispatch(setPostLoading());
+  axios
+    .get(`/api/posts/${id}/edit`)
+    .then(res =>
+      dispatch({
+        type: EDIT_POST,
         payload: res.data
       })
     )

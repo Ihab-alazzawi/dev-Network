@@ -9,8 +9,7 @@ class PostItem extends Component {
     this.props.deletePost(id);
   }
   handleEdit(id) {
-    this.props.history.push(`/posts/${id}`);
-    this.setState({ errors: {} });
+    this.props.history.push(`/posts/${id}/edit`);
   }
   render() {
     const { post, auth } = this.props;
