@@ -21,6 +21,7 @@ import AddEducation from './components/AddEducation';
 import Profiles from './components/profiles/Profiles';
 import ShowProfile from './components/show-profile/ShowProfile';
 import Posts from './components/posts/Posts';
+import EditPost from './components/posts/EditPost';
 import NotFound from './components/NotFound';
 
 //check for token
@@ -88,7 +89,10 @@ class App extends Component {
                 />
               </Switch>
               <Switch>
-                <PrivateRoute exact path="/feed" component={Posts} />
+                <PrivateRoute exact path="/posts" component={Posts} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/posts/:id" component={EditPost} />
               </Switch>
               <Route exact path="/404" component={NotFound} />
             </div>
