@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Inputs from '../common/Inputs';
 import TextArea from '../common/TextArea';
-import { getPost, updatePost } from '../../actions/postActions';
+import { editPost, updatePost } from '../../actions/postActions';
 
 export class EditPost extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ export class EditPost extends Component {
     this.handleUpdate = this.handleUpdate.bind(this);
   }
   componentDidMount() {
-    this.props.getPost(this.props.match.params.id);
+    this.props.editPost(this.props.match.params.id);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -81,7 +81,7 @@ export class EditPost extends Component {
 }
 
 EditPost.propTypes = {
-  getPost: PropTypes.func.isRequired,
+  editPost: PropTypes.func.isRequired,
   updatePost: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
@@ -95,5 +95,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getPost, updatePost }
+  { editPost, updatePost }
 )(withRouter(EditPost));
