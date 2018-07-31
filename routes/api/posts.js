@@ -130,13 +130,15 @@ router.post(
           ) {
             return res
               .status(400)
-              .json({ alreadyLiked: 'User already liked this post' });
+              .json({ alreadyliked: 'User already liked this post' });
           }
-          //Add user id to likes array
+
+          // Add user id to likes array
           post.likes.unshift({ user: req.user.id });
+
           post.save().then(post => res.json(post));
         })
-        .catch(err => res.status(404).json({ postNotFound: 'Post Not Found' }));
+        .catch(err => res.status(404).json({ postnotfound: 'No post found' }));
     });
   }
 );

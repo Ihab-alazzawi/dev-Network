@@ -2,15 +2,25 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getPost, deletePost } from '../../actions/postActions';
+import { deletePost, addLike, removeLike } from '../../actions/postActions';
 
 class PostItem extends Component {
   handleDelete(id) {
     this.props.deletePost(id);
   }
+
   handleEdit(id) {
     this.props.history.push(`/posts/${id}/edit`);
   }
+
+  handleLike(id) {
+    this.props.addLike(id);
+  }
+
+  handleUnLike(id) {
+    this.props.removeLike(id);
+  }
+
   render() {
     const { post, auth } = this.props;
     return (
@@ -31,11 +41,19 @@ class PostItem extends Component {
             <div className="col-md-10">
               <h4 className="mb-4">{post.subject}</h4>
               <p className="lead">{post.text}</p>
-              <button type="button" className="btn btn-light mr-1">
+              <button
+                onClick={this.handleLike.bind(this, post._id)}
+                type="button"
+                className="btn btn-light mr-1"
+              >
                 <i className="text-info fas fa-thumbs-up" />
-                <span className="badge badge-light">4</span>
+                <span className="badge badge-light">{post.likes.length}</span>
               </button>
-              <button type="button" className="btn btn-light mr-1">
+              <button
+                onClick={this.handleUnLike.bind(this, post._id)}
+                type="button"
+                className="btn btn-light mr-1"
+              >
                 <i className="text-secondary fas fa-thumbs-down" />
               </button>
               <a href="post.html" className="btn btn-info mr-1">
@@ -68,7 +86,8 @@ class PostItem extends Component {
 }
 PostItem.propTypes = {
   deletePost: PropTypes.func.isRequired,
-  getPost: PropTypes.func.isRequired,
+  addLike: PropTypes.func.isRequired,
+  removeLike: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired
 };
@@ -77,5 +96,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { getPost, deletePost }
+  { deletePost, addLike, removeLike }
 )(withRouter(PostItem));
