@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import classnames from 'classnames';
 import { deletePost, addLike, removeLike } from '../../actions/postActions';
 
 class PostItem extends Component {
@@ -19,6 +20,15 @@ class PostItem extends Component {
 
   handleUnLike(id) {
     this.props.removeLike(id);
+  }
+
+  handleUserLikes(likes) {
+    const { auth } = this.props;
+    if (likes.filter(like => like.user === auth.user.id).length > 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   render() {
@@ -46,7 +56,11 @@ class PostItem extends Component {
                 type="button"
                 className="btn btn-light mr-1"
               >
-                <i className="text-info fas fa-thumbs-up" />
+                <i
+                  className={classnames('fas fa-thumbs-up', {
+                    'text-info': this.handleUserLikes(post.likes)
+                  })}
+                />
                 <span className="badge badge-light">{post.likes.length}</span>
               </button>
               <button
