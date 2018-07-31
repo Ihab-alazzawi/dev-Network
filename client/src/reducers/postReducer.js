@@ -4,7 +4,8 @@ import {
   GET_POSTS,
   DELETE_POST,
   GET_POST,
-  EDIT_POST
+  EDIT_POST,
+  GET_LIKES
 } from '../actions/types';
 
 const initialState = {
@@ -47,6 +48,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         posts: state.posts.filter(post => post._id !== action.payload)
+      };
+    case GET_LIKES:
+      return {
+        ...state,
+        posts: action.payload
       };
     default:
       return state;
