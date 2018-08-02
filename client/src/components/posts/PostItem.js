@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 import { deletePost, addLike, removeLike } from '../../actions/postActions';
@@ -32,7 +32,7 @@ class PostItem extends Component {
   }
 
   render() {
-    const { post, auth } = this.props;
+    const { post, auth, showActions } = this.props;
     return (
       <div>
         <div className="card card-body mb-3">
@@ -51,45 +51,51 @@ class PostItem extends Component {
             <div className="col-md-10">
               <h4 className="mb-4">{post.subject}</h4>
               <p className="lead">{post.text}</p>
-              <button
-                onClick={this.handleLike.bind(this, post._id)}
-                type="button"
-                className="btn btn-light mr-1"
-              >
-                <i
-                  className={classnames('fas fa-thumbs-up', {
-                    'text-info': this.handleUserLikes(post.likes)
-                  })}
-                />
-                <span className="badge badge-light">{post.likes.length}</span>
-              </button>
-              <button
-                onClick={this.handleUnLike.bind(this, post._id)}
-                type="button"
-                className="btn btn-light mr-1"
-              >
-                <i className="text-secondary fas fa-thumbs-down" />
-              </button>
-              <a href="post.html" className="btn btn-info mr-1">
-                Comments
-              </a>
-              {post.user === auth.user.id ? (
-                <div>
+              {showActions ? (
+                <span>
                   <button
-                    onClick={this.handleEdit.bind(this, post._id)}
+                    onClick={this.handleLike.bind(this, post._id)}
                     type="button"
-                    className="btn btn-light mr-1 mt-1"
+                    className="btn btn-light mr-1"
                   >
-                    Edit
+                    <i
+                      className={classnames('fas fa-thumbs-up', {
+                        'text-info': this.handleUserLikes(post.likes)
+                      })}
+                    />
+                    <span className="badge badge-light">
+                      {post.likes.length}
+                    </span>
                   </button>
                   <button
-                    onClick={this.handleDelete.bind(this, post._id)}
+                    onClick={this.handleUnLike.bind(this, post._id)}
                     type="button"
-                    className="btn btn-danger mr-1 mt-1"
+                    className="btn btn-light mr-1"
                   >
-                    <i className="fas fa-times" />
+                    <i className="text-secondary fas fa-thumbs-down" />
                   </button>
-                </div>
+                  <Link to={`posts/${post._id}`} className="btn btn-info mr-1">
+                    Comments
+                  </Link>
+                  {post.user === auth.user.id ? (
+                    <div>
+                      <button
+                        onClick={this.handleEdit.bind(this, post._id)}
+                        type="button"
+                        className="btn btn-light mr-1 mt-1"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={this.handleDelete.bind(this, post._id)}
+                        type="button"
+                        className="btn btn-danger mr-1 mt-1"
+                      >
+                        <i className="fas fa-times" />
+                      </button>
+                    </div>
+                  ) : null}
+                </span>
               ) : null}
             </div>
           </div>
@@ -98,6 +104,10 @@ class PostItem extends Component {
     );
   }
 }
+
+PostItem.defaultProps = {
+  showActions: true
+};
 PostItem.propTypes = {
   deletePost: PropTypes.func.isRequired,
   addLike: PropTypes.func.isRequired,
