@@ -7,8 +7,21 @@ import Spinner from '../common/Spinner';
 import { getPosts } from '../../actions/postActions';
 
 class Posts extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showForm: false
+    };
+  }
   componentDidMount() {
     this.props.getPosts();
+  }
+
+  handleShowForm(e) {
+    e.preventDefault();
+    this.setState(prevState => ({
+      showForm: !prevState.showForm
+    }));
   }
 
   render() {
@@ -26,8 +39,14 @@ class Posts extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
+              <button
+                className="btn btn-light mb-3"
+                onClick={this.handleShowForm.bind(this)}
+              >
+                Say Something...
+              </button>
+              {this.state.showForm ? <PostForm /> : null}
               {postContent}
-              <PostForm />
             </div>
           </div>
         </div>
