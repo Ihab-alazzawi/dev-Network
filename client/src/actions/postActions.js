@@ -86,15 +86,21 @@ export const editPost = id => dispatch => {
 
 //update post
 
-export const updatePost = (id, postData) => async dispatch => {
-  try {
-    await axios.put(`/api/posts/${id}`, postData);
-  } catch (err) {
-    dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data
-    });
-  }
+export const updatePost = (id, postData) => dispatch => {
+  axios
+    .put(`/api/posts/${id}`, postData)
+    .then(res =>
+      dispatch({
+        type: GET_POSTS,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
 };
 
 //delete post
@@ -163,6 +169,24 @@ export const removeLike = id => dispatch => {
 export const addComment = (postId, commentData) => dispatch => {
   axios
     .post(`/api/posts/comment/${postId}`, commentData)
+    .then(res =>
+      dispatch({
+        type: GET_POST,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+// Delete Comment
+export const deleteComment = (postId, commentId) => dispatch => {
+  axios
+    .delete(`/api/posts/comment/${postId}/${commentId}`)
     .then(res =>
       dispatch({
         type: GET_POST,
