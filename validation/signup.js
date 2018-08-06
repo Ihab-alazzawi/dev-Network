@@ -6,6 +6,7 @@ module.exports = function validateSignupInput(data) {
 
   data.name = !isEmpty(data.name) ? data.name : '';
   data.email = !isEmpty(data.email) ? data.email : '';
+  data.avatar = !isEmpty(data.avatar) ? data.avatar : '';
   data.password = !isEmpty(data.password) ? data.password : '';
   data.password2 = !isEmpty(data.password2) ? data.password2 : '';
 
@@ -25,6 +26,9 @@ module.exports = function validateSignupInput(data) {
     errors.email = 'Email field is required';
   }
 
+  if (Validator.isEmpty(data.avatar)) {
+    errors.avatar = 'GitHub user field is required';
+  }
   if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
     errors.password = 'Password must be at least 6 characters';
   }

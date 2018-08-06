@@ -11,6 +11,7 @@ export class Signup extends Component {
     this.state = {
       name: '',
       email: '',
+      avatar: '',
       password: '',
       password2: '',
       errors: {}
@@ -42,6 +43,7 @@ export class Signup extends Component {
     const newUser = {
       name: this.state.name,
       email: this.state.email,
+      avatar: this.state.avatar,
       password: this.state.password,
       password2: this.state.password2
     };
@@ -74,8 +76,15 @@ export class Signup extends Component {
                   value={this.state.email}
                   onChange={this.handleChange}
                   error={errors.email}
-                  info="This site uses Gravatar so if you want a profile image, use
-                    a Gravatar email"
+                />
+                <Inputs
+                  type="text"
+                  placeholder="GitHub Username"
+                  name="avatar"
+                  value={this.state.avatar}
+                  onChange={this.handleChange}
+                  error={errors.avatar}
+                  info="This site uses GitHub API so if you want a profile image, use your actual GitHub username "
                 />
 
                 <Inputs
