@@ -10,6 +10,7 @@ const Profile = require('../../models/Profile');
 
 //Validation
 const validatePostInput = require('../../validation/post');
+const validateCommentInput = require('../../validation/comment');
 
 // @route   GET api/posts/test
 // @desc    Tests post route
@@ -185,7 +186,7 @@ router.post(
   '/comment/:id',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    const { errors, isValid } = validatePostInput(req.body);
+    const { errors, isValid } = validateCommentInput(req.body);
     //check Validation
     if (!isValid) {
       //if any errors, send 400 with errors object
