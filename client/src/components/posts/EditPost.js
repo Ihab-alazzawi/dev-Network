@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Inputs from '../common/Inputs';
 import TextArea from '../common/TextArea';
@@ -52,33 +52,40 @@ export class EditPost extends Component {
   render() {
     const { errors } = this.props;
     return (
-      <div className="post-form mb-3">
-        <div className="card card-secondary">
-          <div className="card-header bg-secondary text-white">
-            Edit Post...
-          </div>
-          <div className="card-body">
-            <form onSubmit={this.handleUpdate}>
-              <div className="form-group">
-                <Inputs
-                  placeholder="Subject"
-                  name="subject"
-                  value={this.state.subject}
-                  onChange={this.handleChange}
-                  error={errors.subject}
-                />
-                <TextArea
-                  placeholder="Create apost"
-                  name="text"
-                  value={this.state.text}
-                  onChange={this.handleChange}
-                  error={errors.text}
-                />
-              </div>
-              <button type="submit" className="btn btn-dark">
-                Update
-              </button>
-            </form>
+      <div>
+        <div>
+          <Link to="/posts" className="btn btn-secondary mb-3">
+            Back to Posts
+          </Link>
+        </div>
+        <div className="animated bounceInDown post-form mb-3">
+          <div className="card card-secondary">
+            <div className="card-header bg-secondary text-white">
+              Edit Post...
+            </div>
+            <div className="card-body">
+              <form onSubmit={this.handleUpdate}>
+                <div className="form-group">
+                  <Inputs
+                    placeholder="Subject"
+                    name="subject"
+                    value={this.state.subject}
+                    onChange={this.handleChange}
+                    error={errors.subject}
+                  />
+                  <TextArea
+                    placeholder="Create apost"
+                    name="text"
+                    value={this.state.text}
+                    onChange={this.handleChange}
+                    error={errors.text}
+                  />
+                </div>
+                <button type="submit" className="btn btn-dark">
+                  Update
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
