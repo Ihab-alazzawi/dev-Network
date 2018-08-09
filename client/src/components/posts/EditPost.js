@@ -27,7 +27,11 @@ export class EditPost extends Component {
     }
     if (nextProps.post.post) {
       const postItem = nextProps.post.post;
-      this.setState({ subject: postItem.subject, text: postItem.text });
+      this.setState({
+        subject: postItem.subject,
+        text: postItem.text,
+        errors: postItem.errors
+      });
     }
   }
 
@@ -49,8 +53,10 @@ export class EditPost extends Component {
     const { errors } = this.props;
     return (
       <div className="post-form mb-3">
-        <div className="card card-info">
-          <div className="card-header bg-info text-white">Edit Post...</div>
+        <div className="card card-secondary">
+          <div className="card-header bg-secondary text-white">
+            Edit Post...
+          </div>
           <div className="card-body">
             <form onSubmit={this.handleUpdate}>
               <div className="form-group">

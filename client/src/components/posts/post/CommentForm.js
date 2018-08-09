@@ -42,8 +42,10 @@ class CommentForm extends Component {
     const { errors } = this.state;
     return (
       <div className="post-form mb-3">
-        <div className="card card-info">
-          <div className="card-header bg-info text-white">add a comment...</div>
+        <div className="card card-secondary">
+          <div className="card-header bg-secondary text-white">
+            add a comment...
+          </div>
           <div className="card-body">
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">

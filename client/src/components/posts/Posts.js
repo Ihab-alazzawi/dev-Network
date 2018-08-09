@@ -38,9 +38,9 @@ class Posts extends Component {
       <div className="feed">
         <div className="container">
           <div className="row">
-            <div className="col-md-12">
+            <div className="animated bounceInDown col-md-12">
               <button
-                className="btn btn-light mb-3"
+                className="btn btn-secondary mb-3"
                 onClick={this.handleShowForm.bind(this)}
               >
                 Say Something...

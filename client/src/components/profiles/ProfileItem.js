@@ -6,7 +6,7 @@ import isEmpty from '../../validation/is-empty';
 const ProfileItem = props => {
   const { profile } = props;
   return (
-    <div className="card card-body bg-light mb-3">
+    <div className="shadow-sm card card-body bg-light mb-3">
       <div className="row">
         <div className="col-2">
           <img src={profile.user.avatar} alt="" className="rounded-circle" />
@@ -22,7 +22,7 @@ const ProfileItem = props => {
           <p>
             {isEmpty(profile.location) ? null : <span>{profile.location}</span>}
           </p>
-          <Link to={`/profile/${profile.handle}`} className="btn btn-info">
+          <Link to={`/profile/${profile.handle}`} className="btn btn-secondary">
             View Profile
           </Link>
         </div>

@@ -57,9 +57,11 @@ export class Signup extends Component {
       <div className="signup">
         <div className="container">
           <div className="row">
-            <div className="col-md-8 m-auto">
+            <div className="animated bounceInDown col-md-8 m-auto">
               <h1 className="display-4 text-center">Sign Up</h1>
-              <p className="lead text-center">Create your DevNetwork account</p>
+              <p className="lead text-center text-secondary">
+                Create your DevNetwork account
+              </p>
               <form noValidate onSubmit={this.handleSubmit}>
                 <Inputs
                   type="text"
@@ -106,7 +108,7 @@ export class Signup extends Component {
                 />
                 <input
                   type="submit"
-                  className="btn btn-info btn-block mt-4"
+                  className="btn btn-dark btn-block mt-4"
                   value="Submit"
                 />
               </form>
