@@ -7,6 +7,33 @@
   <meta name="theme-color" content="#000000">
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
   <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+  <style type="text/css">
+    .loader:empty {
+      border: 5px solid #333;
+      border-radius: 6rem;
+      height: 6rem;
+      margin: 30% auto 0;
+      opacity: 0;
+      width: 6rem;
+
+      animation: pulsate 1s ease-out;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes pulsate {
+      0% {
+        transform: scale(0.1);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.2);
+        opacity: 0;
+      }
+    }
+  </style>
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
     crossorigin="anonymous">
@@ -18,7 +45,7 @@
 </head>
 
 <body>
-  <div id="root" id="loader"></div>
+  <div id="root" class="loader"></div>
   </div>
   <div></div>
   </div>
