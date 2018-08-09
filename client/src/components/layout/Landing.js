@@ -16,18 +16,26 @@ class Landing extends Component {
         <div className="dark-overlay landing-inner text-light">
           <div className="container">
             <div className="row">
-              <div className="animated bounceInDown col-md-12 text-center">
-                <h1 className="display-3 mb-4 mt-4">Developer Network</h1>
-                <p className="lead">
+              <div className="col-md-12 text-center">
+                <h1 className="animated bounceInDown display-3 mb-4 mt-4">
+                  Developer Network
+                </h1>
+                <p className="animated bounceInLeft lead">
                   {' '}
                   Create a developer profile/portfolio, share posts and get help
                   from other developers
                 </p>
                 <hr className="bg-secondary" />
-                <Link to="/signup" className="btn btn-lg btn-dark mr-2">
+                <Link
+                  to="/signup"
+                  className="animated bounceInRight btn btn-lg btn-dark mr-2"
+                >
                   Sign Up
                 </Link>
-                <Link to="/signin" className="btn btn-lg btn-secondary">
+                <Link
+                  to="/signin"
+                  className="animated bounceInRight btn btn-lg btn-secondary"
+                >
                   Sign in
                 </Link>
               </div>
