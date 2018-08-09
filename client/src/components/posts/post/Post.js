@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../../common/Spinner';
 import { getPost } from '../../../actions/postActions';
-import PostItem from '../PostItem';
 import CommentForm from './CommentForm';
 import CommentFeed from './CommentFeed';
+import ShowPost from './ShowPost';
 
 export class Post extends Component {
   componentDidMount() {
@@ -22,7 +22,7 @@ export class Post extends Component {
     } else {
       postContent = (
         <div>
-          <PostItem post={post} showActions={false} />
+          <ShowPost post={post} auth={auth} />
           <CommentForm postId={post._id} />
           <CommentFeed auth={auth} comments={post.comments} postId={post._id} />
         </div>
@@ -32,8 +32,8 @@ export class Post extends Component {
       <div className="post">
         <div className="container">
           <div className="row">
-            <div className="col-md-12">
-              <Link to="/posts" className="btn btn-light mb-3">
+            <div className="animated bounceInDown col-md-12">
+              <Link to="/posts" className="btn btn-secondary mb-3">
                 Back To Posts
               </Link>
               {postContent}

@@ -26,7 +26,13 @@ class Dashboard extends Component {
       dashboardContent = (
         <div>
           <p className="lead text-muted">
-            Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
+            Welcome{' '}
+            <Link
+              className="badge badge-light"
+              to={`/profile/${profile.handle}`}
+            >
+              {user.name}
+            </Link>
           </p>
           <ProfileButtons />
           <Experience experienceArray={profile.experience} />
@@ -45,7 +51,7 @@ class Dashboard extends Component {
         <div>
           <p className="lead text-muted">Welcome {user.name}</p>
           <p>You have not yet setup a profile, please add some info</p>
-          <Link to="/create-profile" className="btn btn-lg btn-info">
+          <Link to="/create-profile" className="btn btn-lg btn-dark">
             Create Profile
           </Link>
         </div>
@@ -56,7 +62,7 @@ class Dashboard extends Component {
       <div className="dashboard">
         <div className="container">
           <div className="row">
-            <div className="col-md-12">
+            <div className="animated bounceInDown col-md-12">
               <h1 className="display-4">Dashboard</h1>
               {dashboardContent}
             </div>

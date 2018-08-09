@@ -42,7 +42,6 @@ class Navbar extends Component {
                 marginRight: '5px',
                 borderRadius: '25px'
               }}
-              title="You must have a Gravatar connected to your email to display an image"
             />
             Sign Out
           </a>
@@ -65,12 +64,12 @@ class Navbar extends Component {
         </li>
       </ul>
     );
-
+    // transparent navbar-inverse
     return (
-      <nav className="navbar navbar-expand-sm navbar-dark bg-info mb-4 fixed-top">
+      <nav className="shadow navbar navbar-expand-sm navbar-dark bg-dark mb-4 fixed-top">
         <div className="container">
           <Link className="navbar-brand" to="/">
-            DevNetwork
+            DevNetWork
           </Link>
           <button
             className="navbar-toggler"

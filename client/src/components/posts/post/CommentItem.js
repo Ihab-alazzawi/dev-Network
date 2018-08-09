@@ -20,7 +20,7 @@ class CommentItem extends Component {
               alt=""
             />
             <br />
-            <p className="text-center">{comment.name}</p>
+            <p className="badge badge-dark text-center">{comment.name}</p>
           </div>
           <div className="col-md-10">
             <p className="lead">{comment.text}</p>

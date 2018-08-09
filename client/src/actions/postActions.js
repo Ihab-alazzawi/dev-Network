@@ -86,21 +86,15 @@ export const editPost = id => dispatch => {
 
 //update post
 
-export const updatePost = (id, postData) => dispatch => {
-  axios
-    .put(`/api/posts/${id}`, postData)
-    .then(res =>
-      dispatch({
-        type: GET_POSTS,
-        payload: res.data
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
+export const updatePost = (id, postData) => async dispatch => {
+  try {
+    await axios.put(`/api/posts/${id}`, postData);
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    });
+  }
 };
 
 //delete post

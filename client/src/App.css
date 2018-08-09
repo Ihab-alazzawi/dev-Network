@@ -1,6 +1,7 @@
 body {
   padding-top: 4rem;
   padding-bottom: 6rem;
+  font-family: 'Ubuntu', sans-serif;
 }
 img {
   width: 100%;
@@ -8,31 +9,20 @@ img {
 
 .landing {
   position: relative;
+  background: url('./img/bg.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
   height: 100vh;
-  margin-top: -24px;
-  margin-bottom: -50px;
+  margin-top: -70px;
+  margin-bottom: -125px;
 }
 
-#background {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: -100;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-  background: url(./img/Love-Coding.jpg) no-repeat;
-  background-size: cover;
-}
-.landing-inner {
+/* .landing-inner {
   padding-top: 80px;
-}
+} */
 
 .dark-overlay {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
   top: 0;
   left: 0;
@@ -63,4 +53,30 @@ img {
 
 .display-3 {
   padding-top: 10%;
+}
+
+.loader:empty {
+  border: 5px solid #333;
+  border-radius: 6rem;
+  height: 6rem;
+  margin: 10rem auto 0;
+  opacity: 0;
+  width: 6rem;
+
+  animation: pulsate 1s ease-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
 }

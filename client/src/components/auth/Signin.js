@@ -54,9 +54,9 @@ class Signin extends Component {
       <div className="signin">
         <div className="container">
           <div className="row">
-            <div className="col-md-8 m-auto">
+            <div className="animated bounceInDown col-md-8 m-auto">
               <h1 className="display-4 text-center">Sign In</h1>
-              <p className="lead text-center">
+              <p className="lead text-center text-secondary">
                 Sign in to your DevNetwork account
               </p>
               <form onSubmit={this.handleSubmit}>
@@ -76,7 +76,10 @@ class Signin extends Component {
                   onChange={this.handleChange}
                   error={errors.password}
                 />
-                <input type="submit" className="btn btn-info btn-block mt-4" />
+                <input
+                  type="submit"
+                  className="shadow btn btn-dark btn-block mt-4"
+                />
               </form>
             </div>
           </div>

@@ -43,9 +43,11 @@ class PostForm extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <div className="post-form mb-3">
-        <div className="card card-info">
-          <div className="card-header bg-info text-white">Say Something...</div>
+      <div className="animated bounceInDown post-form mb-3">
+        <div className="card card-secondary">
+          <div className="card-header bg-secondary text-white">
+            Say Something...
+          </div>
           <div className="card-body">
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
@@ -54,7 +56,7 @@ class PostForm extends Component {
                   name="subject"
                   value={this.state.subject}
                   onChange={this.handleChange}
-                  error={errors.text}
+                  error={errors.subject}
                 />
                 <TextArea
                   placeholder="Create apost"

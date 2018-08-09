@@ -46,7 +46,20 @@ if (localStorage.jwtToken) {
 }
 
 class App extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     loading: true
+  //   };
+  // }
+  // componentDidMount() {
+  //   this.setState({ loading: false });
+  // }
   render() {
+    // const { loading } = this.state;
+    // if (loading) {
+    //   return null;
+    // }
     return (
       <Provider store={store}>
         <Router>
