@@ -7,7 +7,8 @@ import {
   DELETE_POST,
   GET_POST,
   EDIT_POST,
-  GET_LIKES
+  GET_LIKES,
+  CLEAR_ERRORS
 } from './types';
 
 //Get post
@@ -50,6 +51,7 @@ export const getPosts = () => dispatch => {
 
 //Add post
 export const addPost = postData => dispatch => {
+  dispatch(clearErrors());
   axios
     .post('/api/posts', postData)
     .then(res =>
@@ -87,6 +89,7 @@ export const editPost = id => dispatch => {
 //update post
 
 export const updatePost = (id, postData) => async dispatch => {
+  dispatch(clearErrors());
   try {
     await axios.put(`/api/posts/${id}`, postData);
   } catch (err) {
@@ -161,6 +164,7 @@ export const removeLike = id => dispatch => {
 
 //Add comment
 export const addComment = (postId, commentData) => dispatch => {
+  dispatch(clearErrors());
   axios
     .post(`/api/posts/comment/${postId}`, commentData)
     .then(res =>
@@ -199,5 +203,12 @@ export const deleteComment = (postId, commentId) => dispatch => {
 export const setPostLoading = () => {
   return {
     type: POST_LOADING
+  };
+};
+
+//Clear errors
+export const clearErrors = () => {
+  return {
+    type: CLEAR_ERRORS
   };
 };
