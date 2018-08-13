@@ -4,7 +4,7 @@ import Moment from 'react-moment';
 const ProfileCreds = props => {
   const { education, experience } = props;
   const expItems = experience.map(exp => (
-    <li key={exp._id} className="list-group-item">
+    <li key={exp._id} className="list-group-item rounded-0">
       <h4>{exp.company}</h4>
       <p>
         <Moment format="DD/MM/YYYY">{exp.from}</Moment> -{' '}
@@ -37,7 +37,7 @@ const ProfileCreds = props => {
     </li>
   ));
   const eduItems = education.map(edu => (
-    <li key={edu._id} className="list-group-item">
+    <li key={edu._id} className="list-group-item rounded-0">
       <h4>{edu.school}</h4>
       <p>
         <Moment format="DD/MM/YYYY">{edu.from}</Moment> -{' '}

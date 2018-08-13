@@ -19,12 +19,26 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <Link className="nav-link" to="/posts">
+          <Link
+            className="nav-link btn btn-light rounded-0 bg-white border-left-0 border-right-0 border-top-0 border-dark mr-2"
+            to="/profiles"
+          >
+            <i className="fas fa-users small" /> Developers
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link
+            className="nav-link btn btn-light rounded-0 bg-white border-left-0 border-right-0 border-top-0 border-dark mr-2"
+            to="/posts"
+          >
             Post Feed
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/dashboard">
+          <Link
+            className="nav-link btn btn-light rounded-0 bg-white border-left-0 border-right-0 border-top-0 border-dark mr-2"
+            to="/dashboard"
+          >
             Dashboard
           </Link>
         </li>
@@ -32,7 +46,7 @@ class Navbar extends Component {
           <a
             href="/"
             onClick={this.signOutHandle.bind(this)}
-            className="nav-link"
+            className="nav-link btn btn-light rounded-0 bg-white border-left-0 border-right-0 border-top-0 border-dark pb-2"
           >
             <img
               src={user.avatar}
@@ -53,24 +67,41 @@ class Navbar extends Component {
     const guestLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <Link className="nav-link" to="/signup">
-            Sign Up
+          <Link
+            className="nav-link btn btn-light rounded-0 bg-white border-left-0 border-right-0 border-top-0 border-dark mr-2"
+            to="/profiles"
+          >
+            <i className="fas fa-users small" /> Developers
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/signin">
-            Sign in
+          <Link
+            className="nav-link btn btn-light rounded-0 bg-white border-left-0 border-right-0 border-top-0 border-dark mr-2"
+            to="/signup"
+          >
+            <i className="fas fa-user-plus small" /> Sign Up
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link
+            className="nav-link btn btn-light rounded-0 bg-white border-left-0 border-right-0 border-top-0 border-dark"
+            to="/signin"
+          >
+            <i className="fas fa-user small" /> Sign in
           </Link>
         </li>
       </ul>
     );
-    // transparent navbar-inverse
+
     return (
-      <nav className="shadow navbar navbar-expand-sm navbar-dark bg-dark mb-4 fixed-top">
+      <nav className="navbar navbar-expand-sm navbar-light bg-white text-dark border-bottom mb-4 fixed-top">
         <div className="container">
-          <Link className="navbar-brand" to="/">
-            DevNetWork
+          <Link className="navbar-brand text-dark" to="/">
+            <h5>
+              <strong>{'<DEV/>'}</strong>
+            </h5>
           </Link>
+          <h1 className="text-secondary">Network</h1>
           <button
             className="navbar-toggler"
             type="button"
@@ -79,16 +110,7 @@ class Navbar extends Component {
           >
             <span className="navbar-toggler-icon" />
           </button>
-
           <div className="collapse navbar-collapse" id="mobile-nav">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to="/profiles">
-                  {' '}
-                  Developers
-                </Link>
-              </li>
-            </ul>
             {isAuthenticated ? authLinks : guestLinks}
           </div>
         </div>

@@ -68,8 +68,11 @@ class AddExperience extends Component {
       <div className="add-experience">
         <div className="container">
           <div className="row">
-            <div className="animated bounceInDown col-md-8 m-auto">
-              <Link to="/dashboard" className="btn btn-secondary">
+            <div className="animated  fadeIn col-md-8 m-auto">
+              <Link
+                to="/dashboard"
+                className="btn btn-light mb-3 float-left rounded-0 border-right-0 border-left-0 border-top-0 border-dark"
+              >
                 Go Back
               </Link>
               <h1 className="display-4 text-center">Add Experience</h1>
@@ -141,7 +144,7 @@ class AddExperience extends Component {
                 <input
                   type="submit"
                   value="Submit"
-                  className="btn btn-dark btn-block mt-4"
+                  className="btn btn-light bg-white border-left-0 border-right-0 border-top-0 border-dark rounded-0  btn-block mt-4"
                 />
               </form>
             </div>

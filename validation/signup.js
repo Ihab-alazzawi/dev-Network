@@ -27,7 +27,7 @@ module.exports = function validateSignupInput(data) {
   }
 
   if (Validator.isEmpty(data.avatar)) {
-    errors.avatar = 'GitHub user field is required';
+    errors.avatar = 'Incorrect username';
   }
   if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
     errors.password = 'Password must be at least 6 characters';

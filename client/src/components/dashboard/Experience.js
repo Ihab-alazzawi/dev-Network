@@ -24,7 +24,7 @@ class Experience extends Component {
         <td>
           <button
             onClick={this.deleteHandle.bind(this, exp._id)}
-            className="btn btn-danger"
+            className="btn btn-danger bg-white text-danger border-left-0 border-right-0 border-top-0 border-danger rounded-0"
           >
             Delete
           </button>
@@ -34,16 +34,16 @@ class Experience extends Component {
     return (
       <div>
         <h4 className="mb-4">Experience</h4>
-        <table className="table">
+        <table className="table table-bordered">
           <thead>
-            <tr>
+            <tr className="text-center">
               <th>Company</th>
               <th>Title</th>
               <th>Years</th>
-              <th />
+              <th>{'</>'}</th>
             </tr>
           </thead>
-          <tbody>{experience}</tbody>
+          <tbody className="text-center">{experience}</tbody>
         </table>
       </div>
     );

@@ -38,13 +38,15 @@ class Posts extends Component {
       <div className="feed">
         <div className="container">
           <div className="row">
-            <div className="animated bounceInDown col-md-12">
+            <div className="col md-12 text-right">
               <button
-                className="btn btn-secondary mb-3"
+                className="btn btn-light rounded-0 border-bottom border-dark border-right-0 border-left-0 border-top-0 mb-2 mt-2"
                 onClick={this.handleShowForm.bind(this)}
               >
-                Say Something...
+                <i className="fas fa-plus" /> Add Post
               </button>
+            </div>
+            <div className="animated  fadeIn col-md-12">
               {this.state.showForm ? <PostForm /> : null}
               {postContent}
             </div>

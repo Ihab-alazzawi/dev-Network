@@ -13,22 +13,22 @@ class CommentItem extends Component {
     return (
       <div className="card card-body mb-3">
         <div className="row">
-          <div className="col-md-2">
+          <div className="col-md-2 text-center">
             <img
-              className="rounded-circle d-none d-md-block"
+              className="img-thumbnail rounded-0 border-white bg-dark d-none d-md-block"
               src={comment.avatar}
               alt=""
             />
             <br />
-            <p className="badge badge-dark text-center">{comment.name}</p>
+            <p className="badge bg-white">{comment.name}</p>
           </div>
           <div className="col-md-10">
-            <p className="lead">{comment.text}</p>
+            <p className="card-text">{comment.text}</p>
             {comment.user === auth.user.id ? (
               <button
                 onClick={this.handleDelete.bind(this, postId, comment._id)}
                 type="button"
-                className="btn btn-danger mr-1"
+                className="btn btn-danger bg-white rounded-0 text-danger float-right mr-1"
               >
                 <i className="fas fa-times" />
               </button>

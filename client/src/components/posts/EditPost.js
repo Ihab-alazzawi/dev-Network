@@ -58,7 +58,7 @@ export class EditPost extends Component {
             Back to Posts
           </Link>
         </div>
-        <div className="animated bounceInDown post-form mb-3">
+        <div className="animated  fadeIn post-form mb-3">
           <div className="card card-secondary">
             <div className="card-header bg-secondary text-white">
               Edit Post...

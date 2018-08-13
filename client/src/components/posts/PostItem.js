@@ -36,32 +36,38 @@ class PostItem extends Component {
 
     return (
       <div>
-        <div className="shadow-sm card card-body mb-3">
+        <div className="card card-body rounded-0 mb-3">
           <div className="row">
             <div className="col-md-2 text-center">
               <img
-                className="rounded-circle d-none d-md-block"
+                className="img-thumbnail rounded-0 border-white bg-dark d-none d-md-block"
                 src={post.avatar}
                 alt=""
               />
               <br />
-              <p className="badge badge-dark text-center">
-                Author: '{post.name}'
+              <p className="badge badge-light text-center">
+                Author: {post.name}
               </p>
             </div>
             <div className="col-md-10">
-              <Link className="text-dark" to={`posts/${post._id}`}>
-                <h4 className="mb-4">
-                  <strong>{post.subject.substring(0, 50)}</strong>
-                </h4>
-              </Link>
-
-              <p className="lead mb-5">{post.text.substring(0, 100)}...</p>
+              <p className="mb-4">
+                <strong>
+                  {post.subject.substring(0, 50)}
+                  ...
+                </strong>
+              </p>
+              <p className="mb-5">
+                {post.text.substring(0, 100)}
+                .....
+                <Link className="text-dark text-md" to={`posts/${post._id}`}>
+                  <span className="mb-4">read more</span>
+                </Link>
+              </p>
               <span>
                 <button
                   onClick={this.handleLike.bind(this, post._id)}
                   type="button"
-                  className="btn btn-light mr-1"
+                  className="btn bg-white mr-1"
                 >
                   <i
                     className={classnames('fas fa-thumbs-up text-secondary', {
@@ -73,13 +79,13 @@ class PostItem extends Component {
                 <button
                   onClick={this.handleUnLike.bind(this, post._id)}
                   type="button"
-                  className="btn btn-light mr-1"
+                  className="btn bg-white mr-1"
                 >
                   <i className="text-secondary fas fa-thumbs-down" />
                 </button>
                 <Link
                   to={`posts/${post._id}`}
-                  className="btn btn-dark mr-1 mb-2"
+                  className="btn bg-white text-dark rounded-0 border-dark mr-1 mb-2"
                 >
                   {post.comments.length} Comments
                 </Link>
@@ -88,14 +94,14 @@ class PostItem extends Component {
                     <button
                       onClick={this.handleDelete.bind(this, post._id)}
                       type="button"
-                      className="btn btn-danger float-right"
+                      className="btn btn-danger bg-white rounded-0 text-danger float-right"
                     >
                       <i className="fas fa-times" />
                     </button>
                     <button
                       onClick={this.handleEdit.bind(this, post._id)}
                       type="button"
-                      className="btn btn-secondary mr-2 float-right"
+                      className="btn btn-light rounded-0 border-bottom border-dark border-right-0 border-left-0 border-top-0 float-right mr-1"
                     >
                       Edit
                     </button>

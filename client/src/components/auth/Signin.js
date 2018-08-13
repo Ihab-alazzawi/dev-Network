@@ -54,7 +54,7 @@ class Signin extends Component {
       <div className="signin">
         <div className="container">
           <div className="row">
-            <div className="animated bounceInDown col-md-8 m-auto">
+            <div className="animated  fadeIn col-md-8 m-auto">
               <h1 className="display-4 text-center">Sign In</h1>
               <p className="lead text-center text-secondary">
                 Sign in to your DevNetwork account
@@ -78,7 +78,7 @@ class Signin extends Component {
                 />
                 <input
                   type="submit"
-                  className="shadow btn btn-dark btn-block mt-4"
+                  className="btn btn-lg btn-light rounded-0 bg-white border-left-0 border-right-0 border-top-0 border-dark btn-block"
                 />
               </form>
             </div>

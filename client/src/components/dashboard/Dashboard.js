@@ -28,7 +28,7 @@ class Dashboard extends Component {
           <p className="lead text-muted">
             Welcome{' '}
             <Link
-              className="badge badge-light"
+              className="bg-white text-secondary"
               to={`/profile/${profile.handle}`}
             >
               {user.name}
@@ -40,7 +40,7 @@ class Dashboard extends Component {
           <div style={{ marginBottom: '60px' }} />
           <button
             onClick={this.deleteHandle.bind(this)}
-            className="btn btn-danger"
+            className="btn btn-danger bg-white text-danger border-left-0 border-right-0 border-top-0 border-danger rounded-0"
           >
             Delete My Account
           </button>
@@ -51,7 +51,10 @@ class Dashboard extends Component {
         <div>
           <p className="lead text-muted">Welcome {user.name}</p>
           <p>You have not yet setup a profile, please add some info</p>
-          <Link to="/create-profile" className="btn btn-lg btn-dark">
+          <Link
+            to="/create-profile"
+            className="btn btn-lg btn-light bg-white border-left-0 border-right-0 border-top-0 border-dark rounded-0"
+          >
             Create Profile
           </Link>
         </div>
@@ -62,7 +65,7 @@ class Dashboard extends Component {
       <div className="dashboard">
         <div className="container">
           <div className="row">
-            <div className="animated bounceInDown col-md-12">
+            <div className="animated  fadeIn col-md-12">
               <h1 className="display-4">Dashboard</h1>
               {dashboardContent}
             </div>

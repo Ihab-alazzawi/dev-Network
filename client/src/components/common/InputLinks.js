@@ -14,13 +14,13 @@ const InputLinks = ({
   return (
     <div className="input-group mb-3">
       <div className="input-group-prepend">
-        <span className="input-group-text">
+        <span className="input-group-text rounded-0">
           <i className={icon} />
         </span>
       </div>
       <input
         type={type}
-        className={classnames('form-control form-control-lg', {
+        className={classnames('form-control form-control-lg rounded-0', {
           'is-invalid': error
         })}
         placeholder={placeholder}
