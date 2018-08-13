@@ -230,8 +230,11 @@ class EditProfile extends Component {
       <div className="create-profile">
         <div className="container">
           <div className="row">
-            <div className="animated bounceInDown col-md-8 m-auto">
-              <Link to="/dashboard" className="btn btn-secondary">
+            <div className="animated  fadeIn col-md-8 m-auto">
+              <Link
+                to="/dashboard"
+                className="btn btn-light mb-3 float-left rounded-0 border-right-0 border-left-0 border-top-0 border-dark"
+              >
                 Go Back
               </Link>
               <h1 className="display-4 text-center">Edit Profile</h1>
@@ -312,7 +315,7 @@ class EditProfile extends Component {
                         displaySocialInputs: !prevState.displaySocialInputs
                       }));
                     }}
-                    className="btn btn-secondary"
+                    className="btn btn-light bg-white border-left-0 border-right-0 border-top-0 border-dark rounded-0"
                   >
                     Update Social Network Links
                   </button>
@@ -322,7 +325,7 @@ class EditProfile extends Component {
                 <input
                   type="submit"
                   value="Submit"
-                  className="btn btn-dark btn-block mt-4"
+                  className="btn btn-light bg-white border-left-0 border-right-0 border-top-0 border-dark rounded-0  btn-block mt-4"
                 />
               </form>
             </div>

@@ -16,9 +16,12 @@ const Inputs = ({
     <div className="form-group">
       <input
         type={type}
-        className={classnames('form-control form-control-lg', {
-          'is-invalid': error
-        })}
+        className={classnames(
+          'form-control form-control-lg rounded-0 border-left-0 border-right-0 border-top-0',
+          {
+            'is-invalid': error
+          }
+        )}
         placeholder={placeholder}
         name={name}
         value={value}

@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signUpUser } from '../../actions/authActions';
 import Inputs from '../common/Inputs';
+import axios from 'axios';
 
 export class Signup extends Component {
   constructor(props) {
@@ -37,9 +38,20 @@ export class Signup extends Component {
     });
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
-
+    await axios
+      .get(`https://api.github.com/users/${this.state.avatar}`)
+      .then(res =>
+        this.setState({
+          avatar: res.data.avatar_url
+        })
+      )
+      .catch(err =>
+        this.setState({
+          avatar: ''
+        })
+      );
     const newUser = {
       name: this.state.name,
       email: this.state.email,
@@ -57,7 +69,7 @@ export class Signup extends Component {
       <div className="signup">
         <div className="container">
           <div className="row">
-            <div className="animated bounceInDown col-md-8 m-auto">
+            <div className="animated fadeIn col-md-8 m-auto">
               <h1 className="display-4 text-center">Sign Up</h1>
               <p className="lead text-center text-secondary">
                 Create your DevNetwork account
@@ -108,7 +120,7 @@ export class Signup extends Component {
                 />
                 <input
                   type="submit"
-                  className="btn btn-dark btn-block mt-4"
+                  className="btn btn-lg btn-light rounded-0 bg-white border-left-0 border-right-0 border-top-0 border-dark btn-block"
                   value="Submit"
                 />
               </form>

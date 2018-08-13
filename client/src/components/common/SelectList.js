@@ -12,9 +12,12 @@ const SelectList = ({ name, value, error, info, onChange, options }) => {
   return (
     <div className="form-group">
       <select
-        className={classnames('form-control form-control-lg', {
-          'is-invalid': error
-        })}
+        className={classnames(
+          'form-control form-control-lg border-left-0 border-right-0 border-top-0 rounded-0',
+          {
+            'is-invalid': error
+          }
+        )}
         name={name}
         value={value}
         onChange={onChange}

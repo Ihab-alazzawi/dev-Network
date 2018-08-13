@@ -167,7 +167,7 @@ class CreateProfile extends Component {
       <div className="create-profile">
         <div className="container">
           <div className="row">
-            <div className="animated bounceInDown col-md-8 m-auto">
+            <div className="animated  fadeIn col-md-8 m-auto">
               <h1 className="display-4 text-center"> Create Your Profile</h1>
               <p className="lead text-center">
                 Let's get some information to make your profile stand out
@@ -247,7 +247,7 @@ class CreateProfile extends Component {
                         displaySocialInputs: !prevState.displaySocialInputs
                       }));
                     }}
-                    className="btn btn-secondary"
+                    className="btn btn-light bg-white border-left-0 border-right-0 border-top-0 border-dark rounded-0"
                   >
                     Add Social Network Links
                   </button>
@@ -257,7 +257,7 @@ class CreateProfile extends Component {
                 <input
                   type="submit"
                   value="Submit"
-                  className="btn btn-dark btn-block mt-4"
+                  className="btn btn-light bg-white border-left-0 border-right-0 border-top-0 border-dark rounded-0  btn-block mt-4"
                 />
               </form>
             </div>

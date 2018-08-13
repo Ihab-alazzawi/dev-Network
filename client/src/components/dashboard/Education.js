@@ -24,7 +24,7 @@ class Education extends Component {
         <td>
           <button
             onClick={this.deleteHandle.bind(this, edu._id)}
-            className="btn btn-danger"
+            className="btn btn-danger bg-white text-danger border-left-0 border-right-0 border-top-0 border-danger rounded-0"
           >
             Delete
           </button>
@@ -34,16 +34,16 @@ class Education extends Component {
     return (
       <div>
         <h4 className="mb-4">Education</h4>
-        <table className="table">
-          <thead>
+        <table className="table table-bordered">
+          <thead className="text-center">
             <tr>
               <th>School</th>
               <th>Degree</th>
               <th>Years</th>
-              <th />
+              <th>{'</>'}</th>
             </tr>
           </thead>
-          <tbody>{education}</tbody>
+          <tbody className="text-center">{education}</tbody>
         </table>
       </div>
     );

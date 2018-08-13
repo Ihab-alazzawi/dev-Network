@@ -33,12 +33,10 @@ router.post('/signup', (req, res) => {
       errors.email = 'Email already exists';
       return res.status(400).json(errors);
     } else {
-      const avatar = `https://github.com/${req.body.avatar}.png`;
-
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
-        avatar,
+        avatar: req.body.avatar,
         password: req.body.password
       });
 

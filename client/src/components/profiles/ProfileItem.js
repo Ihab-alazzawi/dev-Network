@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import isEmpty from '../../validation/is-empty';
 
-const ProfileItem = props => {
-  const { profile } = props;
+const ProfileItem = ({ profile }) => {
   return (
-    <div className="shadow-sm card card-body bg-light mb-3">
+    <div className="card card-body bg-light mb-3 rounded-0">
       <div className="row">
         <div className="col-2">
-          <img src={profile.user.avatar} alt="" className="rounded-circle" />
+          <img
+            src={profile.user.avatar}
+            alt=""
+            className="img-thumbnail rounded-0 border-white bg-dark"
+          />
         </div>
         <div className="col-lg-6 col-md-4 col-8">
           <h3>{profile.user.name}</h3>
@@ -22,7 +25,10 @@ const ProfileItem = props => {
           <p>
             {isEmpty(profile.location) ? null : <span>{profile.location}</span>}
           </p>
-          <Link to={`/profile/${profile.handle}`} className="btn btn-secondary">
+          <Link
+            to={`/profile/${profile.handle}`}
+            className="btn btn-light rounded-0 border-bottom border-dark border-right-0 border-left-0 border-top-0"
+          >
             View Profile
           </Link>
         </div>
@@ -30,7 +36,7 @@ const ProfileItem = props => {
           <h4>Skill Set</h4>
           <ul className="list-group">
             {profile.skills.slice(0, 4).map((skill, index) => (
-              <li key={index} className="list-group-item">
+              <li key={index} className="list-group-item rounded-0">
                 <i className="fa fa-check pr-1" />
                 {skill}
               </li>

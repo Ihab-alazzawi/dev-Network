@@ -32,8 +32,11 @@ export class Post extends Component {
       <div className="post">
         <div className="container">
           <div className="row">
-            <div className="animated bounceInDown col-md-12">
-              <Link to="/posts" className="btn btn-secondary mb-3">
+            <div className="animated  fadeIn col-md-12">
+              <Link
+                to="/posts"
+                className="btn btn-light rounded-0 border-bottom border-dark border-right-0 border-left-0 border-top-0 mb-3"
+              >
                 Back To Posts
               </Link>
               {postContent}

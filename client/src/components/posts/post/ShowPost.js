@@ -4,25 +4,28 @@ import PropTypes from 'prop-types';
 const ShowPost = ({ post }) => {
   return (
     <div>
-      <div className="shadow-sm card card-body mb-3">
+      <div className="card card-body rounded-0 mb-3">
         <div className="row">
           <div className="col-md-2">
             <img
-              className="rounded-circle d-none d-md-block"
+              className="img-thumbnail rounded-0 border-white bg-dark d-none d-md-block"
               src={post.avatar}
               alt=""
             />
             <br />
-            <p className="badge badge-dark text-center">
-              Author: '{post.name}'
+            <p className="badge bg-white text-dark text-center">
+              Author : {post.name}
             </p>
           </div>
           <div className="col-md-10">
-            <h4 className="mb-4">
+            <p className="lead mb-4">
               <strong>{post.subject}</strong>
-            </h4>
+            </p>
 
-            <p className="lead mb-5">{post.text}...</p>
+            <p className="mb-5">
+              {post.text}
+              ...
+            </p>
           </div>
         </div>
       </div>
