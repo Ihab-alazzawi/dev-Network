@@ -31,7 +31,7 @@ class Profiles extends Component {
         <div className="container">
           <div className="row">
             <div className="animated  fadeIn col-md-12">
-              <h1 className="display-4 text-center">Developer Profiles</h1>
+              <h1 className="display-5 text-center">Developer Profiles</h1>
               <p className="lead text-center text-secondary">
                 Browse and connect with developers
               </p>

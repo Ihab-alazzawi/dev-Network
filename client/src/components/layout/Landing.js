@@ -16,18 +16,26 @@ class Landing extends Component {
       <div className="container">
         <div className="row">
           <div className="animated fadeIn col-md-7">
-            <p className="display-3 mb-4 mt-4">Developer Network</p>
-            <p className="lead">
-              {' '}
-              Create a developer profile/portfolio, connect, share posts and get
-              help from other developers
-            </p>
-            <Link
-              to="/signup"
-              className="btn btn-lg btn-light rounded-0 bg-white border-left-0 border-right-0 border-top-0 border-dark mr-2"
-            >
-              Get Started
-            </Link>
+            <div className="row pt-4 mt-4">
+              <div className="col text-center">
+                <p className="display-4 mb-4 mt-4">Developer Network</p>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col text-center">
+                <p className="lead">
+                  {' '}
+                  Create a developer profile/portfolio, connect, share posts and
+                  get help from other developers
+                </p>
+                <Link
+                  to="/signup"
+                  className="btn btn-lg btn-light rounded-0 bg-white border-left-0 border-right-0 border-top-0 border-dark mr-2"
+                >
+                  Get Started
+                </Link>
+              </div>
+            </div>
           </div>
           <div className="animated fadeIn col-md-5">
             <div className="landing">

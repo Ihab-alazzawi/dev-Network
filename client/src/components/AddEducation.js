@@ -75,7 +75,9 @@ class AddEducation extends Component {
               >
                 Go Back
               </Link>
-              <h1 className="display-4 text-center">Add Education</h1>
+              <br />
+              <br />
+              <h1 className="display-5 text-center pt-2">Add Education</h1>
               <p className="lead text-center">
                 Add any school, bootcamp, etc that you have attended
               </p>

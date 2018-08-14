@@ -164,7 +164,7 @@ class EditProfile extends Component {
 
     if (displaySocialInputs) {
       socialInputs = (
-        <div>
+        <div className="animated fadeIn">
           <InputLinks
             placeholder="Twitter Profile URL"
             name="twitter"
@@ -227,108 +227,109 @@ class EditProfile extends Component {
     ];
 
     return (
-      <div className="create-profile">
-        <div className="container">
-          <div className="row">
-            <div className="animated  fadeIn col-md-8 m-auto">
-              <Link
-                to="/dashboard"
-                className="btn btn-light mb-3 float-left rounded-0 border-right-0 border-left-0 border-top-0 border-dark"
-              >
-                Go Back
-              </Link>
-              <h1 className="display-4 text-center">Edit Profile</h1>
-              <small className="d-block pb-3">* = required fields</small>
-              <form onSubmit={this.handleSubmit}>
-                <Inputs
-                  placeholder="* Profile Handle"
-                  name="handle"
-                  value={this.state.handle}
-                  onChange={this.handleChange}
-                  error={errors.handle}
-                  info="A unique handle for your profile URL. Your full name, company name, nickname"
-                />
-                <SelectList
-                  placeholder="Status"
-                  name="status"
-                  value={this.state.status}
-                  onChange={this.handleChange}
-                  options={options}
-                  error={errors.status}
-                  info="Give us an idea of where you are at in your career"
-                />
-                <Inputs
-                  placeholder="Company"
-                  name="company"
-                  value={this.state.company}
-                  onChange={this.handleChange}
-                  error={errors.company}
-                  info="Could be your own company or one you work for"
-                />
-                <Inputs
-                  placeholder="Website"
-                  name="website"
-                  value={this.state.website}
-                  onChange={this.handleChange}
-                  error={errors.website}
-                  info="Could be your own website or a company one"
-                />
-                <Inputs
-                  placeholder="Location"
-                  name="location"
-                  value={this.state.location}
-                  onChange={this.handleChange}
-                  error={errors.location}
-                  info="City or city & state suggested (eg. Boston, MA)"
-                />
-                <Inputs
-                  placeholder="* Skills"
-                  name="skills"
-                  value={this.state.skills}
-                  onChange={this.handleChange}
-                  error={errors.skills}
-                  info="Please use comma separated values (eg.
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="animated fadeIn col-8 m-auto">
+            <Link
+              to="/dashboard"
+              className="btn btn-light mb-3 float-left rounded-0 border-right-0 border-left-0 border-top-0 border-dark"
+            >
+              Go Back
+            </Link>
+            <br />
+            <br />
+            <h1 className="text-center display-5 pt-2">Edit Profile</h1>
+            <br />
+            <small className="d-block pb-3">* = required fields</small>
+            <form onSubmit={this.handleSubmit}>
+              <Inputs
+                placeholder="* Profile Handle"
+                name="handle"
+                value={this.state.handle}
+                onChange={this.handleChange}
+                error={errors.handle}
+                info="A unique handle for your profile URL. Your full name, company name, nickname"
+              />
+              <SelectList
+                placeholder="Status"
+                name="status"
+                value={this.state.status}
+                onChange={this.handleChange}
+                options={options}
+                error={errors.status}
+                info="Give us an idea of where you are at in your career"
+              />
+              <Inputs
+                placeholder="Company"
+                name="company"
+                value={this.state.company}
+                onChange={this.handleChange}
+                error={errors.company}
+                info="Could be your own company or one you work for"
+              />
+              <Inputs
+                placeholder="Website"
+                name="website"
+                value={this.state.website}
+                onChange={this.handleChange}
+                error={errors.website}
+                info="Could be your own website or a company one"
+              />
+              <Inputs
+                placeholder="Location"
+                name="location"
+                value={this.state.location}
+                onChange={this.handleChange}
+                error={errors.location}
+                info="City or city & state suggested (eg. Boston, MA)"
+              />
+              <Inputs
+                placeholder="* Skills"
+                name="skills"
+                value={this.state.skills}
+                onChange={this.handleChange}
+                error={errors.skills}
+                info="Please use comma separated values (eg.
                     HTML,CSS,JavaScript,PHP"
-                />
-                <Inputs
-                  placeholder="Github Username"
-                  name="githubusername"
-                  value={this.state.githubusername}
-                  onChange={this.handleChange}
-                  error={errors.githubusername}
-                  info="If you want your latest repos and a Github link, include your username"
-                />
-                <TextArea
-                  placeholder="Short Bio"
-                  name="bio"
-                  value={this.state.bio}
-                  onChange={this.handleChange}
-                  error={errors.bio}
-                  info="Tell us a little about yourself"
-                />
+              />
+              <Inputs
+                placeholder="Github Username"
+                name="githubusername"
+                value={this.state.githubusername}
+                onChange={this.handleChange}
+                error={errors.githubusername}
+                info="If you want your latest repos and a Github link, include your username"
+              />
+              <TextArea
+                placeholder="Short Bio"
+                name="bio"
+                value={this.state.bio}
+                onChange={this.handleChange}
+                error={errors.bio}
+                info="Tell us a little about yourself"
+              />
 
-                <div className="mb-3">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      this.setState(prevState => ({
-                        displaySocialInputs: !prevState.displaySocialInputs
-                      }));
-                    }}
-                    className="btn btn-light bg-white border-left-0 border-right-0 border-top-0 border-dark rounded-0"
-                  >
-                    Update Social Network Links
-                  </button>
-                  <span className="text-muted">Optional</span>
-                </div>
-                {socialInputs}
-                <input
-                  type="submit"
-                  value="Submit"
-                  className="btn btn-light bg-white border-left-0 border-right-0 border-top-0 border-dark rounded-0  btn-block mt-4"
-                />
-              </form>
-            </div>
+              <div className="mb-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    this.setState(prevState => ({
+                      displaySocialInputs: !prevState.displaySocialInputs
+                    }));
+                  }}
+                  className="btn btn-light bg-white border-left-0 border-right-0 border-top-0 border-dark rounded-0"
+                >
+                  Update Social Network Links
+                </button>
+                <span className="text-muted">Optional</span>
+              </div>
+              {socialInputs}
+              <input
+                type="submit"
+                value="Submit"
+                className="btn btn-light bg-white border-left-0 border-right-0 border-top-0 border-dark rounded-0  btn-block mt-4"
+              />
+            </form>
           </div>
         </div>
       </div>

@@ -38,31 +38,31 @@ class PostItem extends Component {
       <div>
         <div className="card card-body rounded-0 mb-3">
           <div className="row">
-            <div className="col-md-2 text-center">
+            <div className="col-2 text-center">
               <img
-                className="img-thumbnail rounded-0 border-white bg-dark d-none d-md-block"
+                className="img-thumbnail rounded-0 border-white bg-dark"
                 src={post.avatar}
                 alt=""
               />
-              <br />
-              <p className="badge badge-light text-center">
-                Author: {post.name}
+              <p className="badge bg-white text-center">
+                Author: {post.name.trim().split(' ')[0]}
               </p>
             </div>
             <div className="col-md-10">
-              <p className="mb-4">
-                <strong>
+              <strong>
+                <h5 className="mb-4 font-weight-bold">
                   {post.subject.substring(0, 50)}
                   ...
-                </strong>
-              </p>
-              <p className="mb-5">
+                </h5>
+              </strong>
+              <p className="text-justify">
                 {post.text.substring(0, 100)}
                 .....
                 <Link className="text-dark text-md" to={`posts/${post._id}`}>
                   <span className="mb-4">read more</span>
                 </Link>
               </p>
+
               <span>
                 <button
                   onClick={this.handleLike.bind(this, post._id)}
@@ -89,24 +89,28 @@ class PostItem extends Component {
                 >
                   {post.comments.length} Comments
                 </Link>
-                {post.user === auth.user.id ? (
-                  <span>
-                    <button
-                      onClick={this.handleDelete.bind(this, post._id)}
-                      type="button"
-                      className="btn btn-danger bg-white rounded-0 text-danger float-right"
-                    >
-                      <i className="fas fa-times" />
-                    </button>
-                    <button
-                      onClick={this.handleEdit.bind(this, post._id)}
-                      type="button"
-                      className="btn btn-light rounded-0 border-bottom border-dark border-right-0 border-left-0 border-top-0 float-right mr-1"
-                    >
-                      Edit
-                    </button>
-                  </span>
-                ) : null}
+                <div className="row">
+                  <div className="col-md-10">
+                    {post.user === auth.user.id ? (
+                      <span>
+                        <button
+                          onClick={this.handleDelete.bind(this, post._id)}
+                          type="button"
+                          className="btn btn-danger bg-white rounded-0 text-danger float-right"
+                        >
+                          <i className="fas fa-times" />
+                        </button>
+                        <button
+                          onClick={this.handleEdit.bind(this, post._id)}
+                          type="button"
+                          className="btn btn-light rounded-0 border-bottom border-dark border-right-0 border-left-0 border-top-0 float-right mr-1"
+                        >
+                          Edit
+                        </button>
+                      </span>
+                    ) : null}
+                  </div>
+                </div>
               </span>
             </div>
           </div>
