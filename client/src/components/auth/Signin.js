@@ -55,7 +55,7 @@ class Signin extends Component {
         <div className="container">
           <div className="row">
             <div className="animated  fadeIn col-md-8 m-auto">
-              <h1 className="display-4 text-center">Sign In</h1>
+              <h1 className="display-5 text-center">Sign In</h1>
               <p className="lead text-center text-secondary">
                 Sign in to your DevNetwork account
               </p>

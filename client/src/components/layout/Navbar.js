@@ -101,7 +101,7 @@ class Navbar extends Component {
               <strong>{'<DEV/>'}</strong>
             </h5>
           </Link>
-          <h1 className="text-secondary">Network</h1>
+          <h1 className="text-secondary pt-2">Network</h1>
           <button
             className="navbar-toggler"
             type="button"

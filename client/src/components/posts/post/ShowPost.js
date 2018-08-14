@@ -6,10 +6,10 @@ const ShowPost = ({ post }) => {
     <div>
       <div className="card card-body rounded-0 mb-3">
         <div className="row">
-          <div className="col-md-2">
+          <div className="col-2">
             <img
-              className="img-thumbnail rounded-0 border-white bg-dark d-none d-md-block"
-              src={post.avatar}
+              className="img-thumbnail rounded-0 border-white bg-dark"
+              src={post.avatar.trim().split(' ')[0]}
               alt=""
             />
             <br />
@@ -18,11 +18,11 @@ const ShowPost = ({ post }) => {
             </p>
           </div>
           <div className="col-md-10">
-            <p className="lead mb-4">
+            <h5 className="mb-4 font-weight-bold">
               <strong>{post.subject}</strong>
-            </p>
+            </h5>
 
-            <p className="mb-5">
+            <p className="mb-5 text-justify">
               {post.text}
               ...
             </p>

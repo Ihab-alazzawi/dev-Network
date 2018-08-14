@@ -54,13 +54,16 @@ export class EditPost extends Component {
     return (
       <div>
         <div>
-          <Link to="/posts" className="btn btn-secondary mb-3">
+          <Link
+            to="/posts"
+            className="btn btn-light rounded-0 border-bottom border-dark border-right-0 border-left-0 border-top-0 mb-2"
+          >
             Back to Posts
           </Link>
         </div>
         <div className="animated  fadeIn post-form mb-3">
-          <div className="card card-secondary">
-            <div className="card-header bg-secondary text-white">
+          <div className="card card-secondary rounded-0">
+            <div className="card-header bg-white rounded-0 text-dark">
               Edit Post...
             </div>
             <div className="card-body">
@@ -81,7 +84,10 @@ export class EditPost extends Component {
                     error={errors.text}
                   />
                 </div>
-                <button type="submit" className="btn btn-dark">
+                <button
+                  type="submit"
+                  className="btn btn-light rounded-0 border-bottom border-dark border-right-0 border-left-0 border-top-0"
+                >
                   Update
                 </button>
               </form>

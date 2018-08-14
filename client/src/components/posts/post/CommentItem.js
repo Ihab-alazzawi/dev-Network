@@ -23,16 +23,22 @@ class CommentItem extends Component {
             <p className="badge bg-white">{comment.name}</p>
           </div>
           <div className="col-md-10">
-            <p className="card-text">{comment.text}</p>
-            {comment.user === auth.user.id ? (
-              <button
-                onClick={this.handleDelete.bind(this, postId, comment._id)}
-                type="button"
-                className="btn btn-danger bg-white rounded-0 text-danger float-right mr-1"
-              >
-                <i className="fas fa-times" />
-              </button>
-            ) : null}
+            <span className="card-text text-justify align-middle">
+              {comment.text}
+            </span>
+            <div className="row">
+              <div className="col align-bottom">
+                {comment.user === auth.user.id ? (
+                  <button
+                    onClick={this.handleDelete.bind(this, postId, comment._id)}
+                    type="button"
+                    className="btn btn-danger bg-white rounded-0 text-danger float-right"
+                  >
+                    <i className="fas fa-times" />
+                  </button>
+                ) : null}
+              </div>
+            </div>
           </div>
         </div>
       </div>

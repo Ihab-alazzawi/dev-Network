@@ -1,5 +1,5 @@
 body {
-  padding-top: 7rem;
+  padding-top: 6rem;
   padding-bottom: 6rem;
   font-family: 'Raleway', sans-serif;
 }
@@ -8,10 +8,10 @@ img {
 }
 
 .navbar-brand {
-  height: 100px;
+  height: 75px;
   border: 5px solid black;
-  padding: 2rem 1rem 0 1rem;
-  margin-top: -8px;
+  padding: 1.3rem 0.5rem 0 0.5rem;
+  margin-right: 0;
 }
 
 .pb-2,
