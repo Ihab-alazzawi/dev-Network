@@ -289,7 +289,7 @@ class EditProfile extends Component {
                 value={this.state.skills}
                 onChange={this.handleChange}
                 error={errors.skills}
-                info="Please use comma separated values (eg.
+                info="Please use comma separated values eg.
                     HTML,CSS,JavaScript,PHP"
               />
               <Inputs

@@ -2,13 +2,16 @@ import {
   GET_PROFILE,
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
-  GET_PROFILES
+  GET_PROFILES,
+  SHOW_MODAL,
+  HIDE_MODAL
 } from '../actions/types';
 
 const initialState = {
   profile: null,
   profiles: null,
-  loading: false
+  loading: false,
+  isOpen: false
 };
 
 export default function(state = initialState, action) {
@@ -34,6 +37,16 @@ export default function(state = initialState, action) {
       return {
         ...state,
         profile: null
+      };
+    case SHOW_MODAL:
+      return {
+        ...state,
+        isOpen: true
+      };
+    case HIDE_MODAL:
+      return {
+        ...state,
+        isOpen: false
       };
     default:
       return state;

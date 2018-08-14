@@ -2,9 +2,28 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
-import { deleteExperience } from '../../actions/profileActions';
+import {
+  deleteExperience,
+  showModal,
+  hideModal
+} from '../../actions/profileActions';
+import Modal from '../common/Modal';
 
 class Experience extends Component {
+  constructor(props) {
+    super(props);
+    this.deleteHandle = this.deleteHandle.bind(this);
+    this.openModalHandle = this.openModalHandle.bind(this);
+    this.closeModalHandle = this.closeModalHandle.bind(this);
+  }
+
+  openModalHandle() {
+    this.props.showModal();
+  }
+
+  closeModalHandle() {
+    this.props.hideModal();
+  }
   deleteHandle(id) {
     this.props.deleteExperience(id);
   }
@@ -22,12 +41,12 @@ class Experience extends Component {
           )}
         </td>
         <td>
-          <button
-            onClick={this.deleteHandle.bind(this, exp._id)}
-            className="btn btn-danger bg-white text-danger border-left-0 border-right-0 border-top-0 border-danger rounded-0"
-          >
-            Delete
-          </button>
+          <Modal
+            deleteHandle={this.deleteHandle}
+            openModalHandle={this.openModalHandle}
+            closeModalHandle={this.closeModalHandle}
+            modalButton="Delete"
+          />
         </td>
       </tr>
     ));
@@ -56,5 +75,5 @@ Experience.propTypes = {
 
 export default connect(
   null,
-  { deleteExperience }
+  { deleteExperience, showModal, hideModal }
 )(Experience);

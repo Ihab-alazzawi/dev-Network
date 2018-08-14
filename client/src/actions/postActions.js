@@ -11,6 +11,8 @@ import {
   CLEAR_ERRORS
 } from './types';
 
+import { showModal } from './profileActions';
+
 //Get post
 export const getPost = id => dispatch => {
   dispatch(setPostLoading());
@@ -102,6 +104,7 @@ export const updatePost = (id, postData) => async dispatch => {
 
 //delete post
 export const deletePost = id => dispatch => {
+  dispatch(showModal());
   axios
     .delete(`/api/posts/${id}`)
     .then(res =>
@@ -183,6 +186,7 @@ export const addComment = (postId, commentData) => dispatch => {
 
 // Delete Comment
 export const deleteComment = (postId, commentId) => dispatch => {
+  dispatch(showModal());
   axios
     .delete(`/api/posts/comment/${postId}/${commentId}`)
     .then(res =>

@@ -2,18 +2,38 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getCurrentProfile, deleteAccount } from '../../actions/profileActions';
+import {
+  getCurrentProfile,
+  deleteAccount,
+  showModal,
+  hideModal
+} from '../../actions/profileActions';
 import Spinner from '../common/Spinner';
 import ProfileButtons from '../dashboard/ProfileButtons';
 import Experience from '../dashboard/Experience';
 import Education from './Education';
+import Modal from '../common/Modal';
 
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.deleteHandle = this.deleteHandle.bind(this);
+    this.openModalHandle = this.openModalHandle.bind(this);
+    this.closeModalHandle = this.closeModalHandle.bind(this);
+  }
   componentDidMount() {
     this.props.getCurrentProfile();
   }
 
-  deleteHandle(e) {
+  openModalHandle() {
+    this.props.showModal();
+  }
+
+  closeModalHandle() {
+    this.props.hideModal();
+  }
+
+  deleteHandle() {
     this.props.deleteAccount();
   }
   render() {
@@ -38,12 +58,12 @@ class Dashboard extends Component {
           <Experience experienceArray={profile.experience} />
           <Education educationArray={profile.education} />
           <div style={{ marginBottom: '60px' }} />
-          <button
-            onClick={this.deleteHandle.bind(this)}
-            className="btn btn-danger bg-white text-danger border-left-0 border-right-0 border-top-0 border-danger rounded-0"
-          >
-            Delete My Account
-          </button>
+          <Modal
+            deleteHandle={this.deleteHandle}
+            openModalHandle={this.openModalHandle}
+            closeModalHandle={this.closeModalHandle}
+            modalButton="Delete My Account"
+          />
         </div>
       );
     } else {
@@ -89,5 +109,5 @@ const mapStateToProp = state => ({
 });
 export default connect(
   mapStateToProp,
-  { getCurrentProfile, deleteAccount }
+  { getCurrentProfile, deleteAccount, showModal, hideModal }
 )(Dashboard);

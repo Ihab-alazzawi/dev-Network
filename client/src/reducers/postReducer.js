@@ -5,13 +5,16 @@ import {
   DELETE_POST,
   GET_POST,
   EDIT_POST,
-  GET_LIKES
+  GET_LIKES,
+  SHOW_MODAL,
+  HIDE_MODAL
 } from '../actions/types';
 
 const initialState = {
   posts: [],
   post: {},
-  loading: false
+  loading: false,
+  isOpen: false
 };
 
 export default function(state = initialState, action) {
@@ -53,6 +56,16 @@ export default function(state = initialState, action) {
       return {
         ...state,
         posts: action.payload
+      };
+    case SHOW_MODAL:
+      return {
+        ...state,
+        isOpen: true
+      };
+    case HIDE_MODAL:
+      return {
+        ...state,
+        isOpen: false
       };
     default:
       return state;
