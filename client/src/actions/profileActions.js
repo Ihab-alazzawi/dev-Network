@@ -5,7 +5,9 @@ import {
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
   GET_ERRORS,
-  SET_CURRENT_USER
+  SET_CURRENT_USER,
+  SHOW_MODAL,
+  HIDE_MODAL
 } from './types';
 
 //Get current profile
@@ -124,6 +126,7 @@ export const addEducation = (eduData, history) => dispatch => {
 //delete experience
 
 export const deleteExperience = id => dispatch => {
+  dispatch(showModal());
   axios
     .delete(`/api/profile/experience/${id}`)
     .then(res =>
@@ -143,6 +146,7 @@ export const deleteExperience = id => dispatch => {
 //delete education
 
 export const deleteEducation = id => dispatch => {
+  dispatch(showModal());
   axios
     .delete(`/api/profile/education/${id}`)
     .then(res =>
@@ -162,20 +166,33 @@ export const deleteEducation = id => dispatch => {
 //delete account and profile
 
 export const deleteAccount = () => dispatch => {
-  if (window.confirm('Are you sure? THIS CAN NOT BE UNDONE!')) {
-    axios
-      .delete('/api/profile')
-      .then(res => {
-        dispatch({
-          type: SET_CURRENT_USER,
-          payload: {}
-        });
+  dispatch(showModal());
+  axios
+    .delete('/api/profile')
+    .then(res => {
+      dispatch({
+        type: SET_CURRENT_USER,
+        payload: {}
+      });
+    })
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
       })
-      .catch(err =>
-        dispatch({
-          type: GET_ERRORS,
-          payload: err.response.data
-        })
-      );
-  }
+    );
+};
+
+//show modal
+export const showModal = () => {
+  return {
+    type: SHOW_MODAL
+  };
+};
+
+//hide modal
+export const hideModal = () => {
+  return {
+    type: HIDE_MODAL
+  };
 };

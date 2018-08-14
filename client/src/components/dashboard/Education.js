@@ -2,12 +2,32 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
-import { deleteEducation } from '../../actions/profileActions';
+import {
+  deleteEducation,
+  showModal,
+  hideModal
+} from '../../actions/profileActions';
+import Modal from '../common/Modal';
 
 class Education extends Component {
+  constructor(props) {
+    super(props);
+    this.deleteHandle = this.deleteHandle.bind(this);
+    this.openModalHandle = this.openModalHandle.bind(this);
+    this.closeModalHandle = this.closeModalHandle.bind(this);
+  }
   deleteHandle(id) {
     this.props.deleteEducation(id);
   }
+
+  openModalHandle() {
+    this.props.showModal();
+  }
+
+  closeModalHandle() {
+    this.props.hideModal();
+  }
+
   render() {
     const education = this.props.educationArray.map(edu => (
       <tr key={edu._id}>
@@ -22,12 +42,12 @@ class Education extends Component {
           )}
         </td>
         <td>
-          <button
-            onClick={this.deleteHandle.bind(this, edu._id)}
-            className="btn btn-danger bg-white text-danger border-left-0 border-right-0 border-top-0 border-danger rounded-0"
-          >
-            Delete
-          </button>
+          <Modal
+            deleteHandle={this.deleteHandle}
+            openModalHandle={this.openModalHandle}
+            closeModalHandle={this.closeModalHandle}
+            modalButton="Delete"
+          />
         </td>
       </tr>
     ));
@@ -56,5 +76,5 @@ Education.propTypes = {
 
 export default connect(
   null,
-  { deleteEducation }
+  { deleteEducation, showModal, hideModal }
 )(Education);

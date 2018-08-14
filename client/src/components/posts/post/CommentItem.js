@@ -2,9 +2,26 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteComment } from '../../../actions/postActions';
+import { showModal, hideModal } from '../../../actions/profileActions';
+import Modal from '../../common/Modal';
 
 class CommentItem extends Component {
-  handleDelete(postId, commentId) {
+  constructor(props) {
+    super(props);
+
+    this.openModalHandle = this.openModalHandle.bind(this);
+    this.closeModalHandle = this.closeModalHandle.bind(this);
+  }
+
+  openModalHandle() {
+    this.props.showModal();
+  }
+
+  closeModalHandle() {
+    this.props.hideModal();
+  }
+
+  deleteHandle(postId, commentId) {
     this.props.deleteComment(postId, commentId);
   }
 
@@ -26,16 +43,19 @@ class CommentItem extends Component {
             <span className="card-text text-justify align-middle">
               {comment.text}
             </span>
-            <div className="row">
-              <div className="col align-bottom">
+            <div className="row justify-content-end">
+              <div className="col text-right">
                 {comment.user === auth.user.id ? (
-                  <button
-                    onClick={this.handleDelete.bind(this, postId, comment._id)}
-                    type="button"
-                    className="btn btn-danger bg-white rounded-0 text-danger float-right"
-                  >
-                    <i className="fas fa-times" />
-                  </button>
+                  <Modal
+                    deleteHandle={this.deleteHandle.bind(
+                      this,
+                      postId,
+                      comment._id
+                    )}
+                    openModalHandle={this.openModalHandle}
+                    closeModalHandle={this.closeModalHandle}
+                    modalButton="X"
+                  />
                 ) : null}
               </div>
             </div>
@@ -55,5 +75,5 @@ CommentItem.propTypes = {
 
 export default connect(
   null,
-  { deleteComment }
+  { deleteComment, showModal, hideModal }
 )(CommentItem);

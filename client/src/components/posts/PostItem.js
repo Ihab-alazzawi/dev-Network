@@ -4,9 +4,25 @@ import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 import { deletePost, addLike, removeLike } from '../../actions/postActions';
+import { showModal, hideModal } from '../../actions/profileActions';
+import Modal from '../common/Modal';
 
 class PostItem extends Component {
-  handleDelete(id) {
+  constructor(props) {
+    super(props);
+
+    this.openModalHandle = this.openModalHandle.bind(this);
+    this.closeModalHandle = this.closeModalHandle.bind(this);
+  }
+
+  openModalHandle() {
+    this.props.showModal();
+  }
+
+  closeModalHandle() {
+    this.props.hideModal();
+  }
+  deleteHandle(id) {
     this.props.deletePost(id);
   }
 
@@ -89,24 +105,23 @@ class PostItem extends Component {
                 >
                   {post.comments.length} Comments
                 </Link>
-                <div className="row">
-                  <div className="col-md-10">
+                <div className="row justify-content-end">
+                  <div className="col-md-10 text-right">
                     {post.user === auth.user.id ? (
                       <span>
                         <button
-                          onClick={this.handleDelete.bind(this, post._id)}
-                          type="button"
-                          className="btn btn-danger bg-white rounded-0 text-danger float-right"
-                        >
-                          <i className="fas fa-times" />
-                        </button>
-                        <button
                           onClick={this.handleEdit.bind(this, post._id)}
                           type="button"
-                          className="btn btn-light rounded-0 border-bottom border-dark border-right-0 border-left-0 border-top-0 float-right mr-1"
+                          className="btn btn-light rounded-0 border-bottom border-dark border-right-0 border-left-0 border-top-0 mr-1 ml-2"
                         >
                           Edit
                         </button>
+                        <Modal
+                          deleteHandle={this.deleteHandle.bind(this, post._id)}
+                          openModalHandle={this.openModalHandle}
+                          closeModalHandle={this.closeModalHandle}
+                          modalButton="X"
+                        />
                       </span>
                     ) : null}
                   </div>
@@ -132,5 +147,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { deletePost, addLike, removeLike }
+  { deletePost, addLike, removeLike, showModal, hideModal }
 )(withRouter(PostItem));
