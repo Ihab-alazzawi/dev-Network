@@ -11,73 +11,67 @@ import {
 } from './types';
 
 //Get current profile
-export const getCurrentProfile = () => dispatch => {
+export const getCurrentProfile = () => async dispatch => {
   dispatch(setProfileLoading());
-  axios
-    .get('/api/profile')
-    .then(res =>
-      dispatch({
-        type: GET_PROFILE,
-        payload: res.data
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: GET_PROFILE,
-        payload: {}
-      })
-    );
+  try {
+    const res = await axios.get('/api/profile');
+    dispatch({
+      type: GET_PROFILE,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_PROFILE,
+      payload: {}
+    });
+  }
 };
 
 //Get profile by handle
-export const getProfileByHandle = handle => dispatch => {
+export const getProfileByHandle = handle => async dispatch => {
   dispatch(setProfileLoading());
-  axios
-    .get(`/api/profile/${handle}`)
-    .then(res =>
-      dispatch({
-        type: GET_PROFILE,
-        payload: res.data
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: GET_PROFILE,
-        payload: null
-      })
-    );
+  try {
+    const res = await axios.get(`/api/profile/${handle}`);
+    dispatch({
+      type: GET_PROFILE,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_PROFILE,
+      payload: null
+    });
+  }
 };
 
 //Get all profiles
-export const getProfiles = () => dispatch => {
+export const getProfiles = () => async dispatch => {
   dispatch(setProfileLoading());
-  axios
-    .get('/api/profile/all')
-    .then(res =>
-      dispatch({
-        type: GET_PROFILES,
-        payload: res.data
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: GET_PROFILES,
-        payload: null
-      })
-    );
+  try {
+    const res = await axios.get('/api/profile/all');
+    dispatch({
+      type: GET_PROFILES,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_PROFILES,
+      payload: null
+    });
+  }
 };
 
 //Create Profile
-export const createProfile = (profileData, history) => dispatch => {
-  axios
-    .post('/api/profile', profileData)
-    .then(res => history.push('/dashboard'))
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
+export const createProfile = (profileData, history) => async dispatch => {
+  try {
+    await axios.post('/api/profile', profileData);
+    history.push('/dashboard');
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    });
+  }
 };
 
 //profile loading
@@ -88,7 +82,6 @@ export const setProfileLoading = () => {
 };
 
 //clear profile after sign out
-
 export const clearCurrentProfile = () => {
   return {
     type: CLEAR_CURRENT_PROFILE
@@ -96,91 +89,80 @@ export const clearCurrentProfile = () => {
 };
 
 //Add experience
-
-export const addExperience = (expData, history) => dispatch => {
-  axios
-    .post('/api/profile/experience', expData)
-    .then(res => history.push('/dashboard'))
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
+export const addExperience = (expData, history) => async dispatch => {
+  try {
+    await axios.post('/api/profile/experience', expData);
+    history.push('/dashboard');
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    });
+  }
 };
 
 //Add Education
-
-export const addEducation = (eduData, history) => dispatch => {
-  axios
-    .post('/api/profile/education', eduData)
-    .then(res => history.push('/dashboard'))
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
+export const addEducation = (eduData, history) => async dispatch => {
+  try {
+    await axios.post('/api/profile/education', eduData);
+    history.push('/dashboard');
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    });
+  }
 };
 
 //delete experience
-
-export const deleteExperience = id => dispatch => {
+export const deleteExperience = id => async dispatch => {
   dispatch(showModal());
-  axios
-    .delete(`/api/profile/experience/${id}`)
-    .then(res =>
-      dispatch({
-        type: GET_PROFILE,
-        payload: res.data
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
+  try {
+    const res = await axios.delete(`/api/profile/experience/${id}`);
+    dispatch({
+      type: GET_PROFILE,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    });
+  }
 };
 
 //delete education
-
-export const deleteEducation = id => dispatch => {
+export const deleteEducation = id => async dispatch => {
   dispatch(showModal());
-  axios
-    .delete(`/api/profile/education/${id}`)
-    .then(res =>
-      dispatch({
-        type: GET_PROFILE,
-        payload: res.data
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
+  try {
+    const res = await axios.delete(`/api/profile/education/${id}`);
+    dispatch({
+      type: GET_PROFILE,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    });
+  }
 };
 
 //delete account and profile
-
-export const deleteAccount = () => dispatch => {
+export const deleteAccount = () => async dispatch => {
   dispatch(showModal());
-  axios
-    .delete('/api/profile')
-    .then(res => {
-      dispatch({
-        type: SET_CURRENT_USER,
-        payload: {}
-      });
-    })
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
+  try {
+    await axios.delete('/api/profile');
+    dispatch({
+      type: SET_CURRENT_USER,
+      payload: {}
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    });
+  }
 };
 
 //show modal

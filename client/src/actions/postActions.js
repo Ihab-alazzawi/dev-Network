@@ -14,82 +14,74 @@ import {
 import { showModal } from './profileActions';
 
 //Get post
-export const getPost = id => dispatch => {
+export const getPost = id => async dispatch => {
   dispatch(setPostLoading());
-  axios
-    .get(`/api/posts/${id}`)
-    .then(res =>
-      dispatch({
-        type: GET_POST,
-        payload: res.data
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: GET_POST,
-        payload: null
-      })
-    );
+  try {
+    const res = await axios.get(`/api/posts/${id}`);
+    dispatch({
+      type: GET_POST,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_POST,
+      payload: null
+    });
+  }
 };
 
 //Get posts
-export const getPosts = () => dispatch => {
+export const getPosts = () => async dispatch => {
   dispatch(setPostLoading());
-  axios
-    .get('/api/posts')
-    .then(res =>
-      dispatch({
-        type: GET_POSTS,
-        payload: res.data
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: GET_POSTS,
-        payload: null
-      })
-    );
+  try {
+    const res = await axios.get('/api/posts');
+    dispatch({
+      type: GET_POSTS,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_POSTS,
+      payload: null
+    });
+  }
 };
 
 //Add post
-export const addPost = postData => dispatch => {
+export const addPost = postData => async dispatch => {
   dispatch(clearErrors());
-  axios
-    .post('/api/posts', postData)
-    .then(res =>
-      dispatch({
-        type: ADD_POST,
-        payload: res.data
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
+  try {
+    const res = await axios.post('/api/posts', postData);
+    dispatch({
+      type: ADD_POST,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    });
+  }
 };
+
 //Edit post
-export const editPost = id => dispatch => {
+export const editPost = id => async dispatch => {
   dispatch(setPostLoading());
-  axios
-    .get(`/api/posts/${id}/edit`)
-    .then(res =>
-      dispatch({
-        type: EDIT_POST,
-        payload: res.data
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
+  try {
+    const res = await axios.get(`/api/posts/${id}/edit`);
+    dispatch({
+      type: EDIT_POST,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    });
+  }
 };
 
 //update post
-
 export const updatePost = (id, postData) => async dispatch => {
   dispatch(clearErrors());
   try {
@@ -103,104 +95,96 @@ export const updatePost = (id, postData) => async dispatch => {
 };
 
 //delete post
-export const deletePost = id => dispatch => {
+export const deletePost = id => async dispatch => {
   dispatch(showModal());
-  axios
-    .delete(`/api/posts/${id}`)
-    .then(res =>
-      dispatch({
-        type: DELETE_POST,
-        payload: id
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
+  try {
+    await axios.delete(`/api/posts/${id}`);
+    dispatch({
+      type: DELETE_POST,
+      payload: id
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    });
+  }
 };
 
 //Get likes
-export const getLikes = () => dispatch => {
-  axios
-    .get('/api/posts')
-    .then(res =>
-      dispatch({
-        type: GET_LIKES,
-        payload: res.data
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: GET_LIKES,
-        payload: null
-      })
-    );
+export const getLikes = () => async dispatch => {
+  try {
+    const res = await axios.get('/api/posts');
+    dispatch({
+      type: GET_LIKES,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_LIKES,
+      payload: null
+    });
+  }
 };
 
 //add like
-export const addLike = id => dispatch => {
-  axios
-    .post(`/api/posts/like/${id}`)
-    .then(res => dispatch(getLikes()))
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
+export const addLike = id => async dispatch => {
+  try {
+    await axios.post(`/api/posts/like/${id}`);
+    dispatch(getLikes());
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    });
+  }
 };
 
 //remove like
-export const removeLike = id => dispatch => {
-  axios
-    .post(`/api/posts/unlike/${id}`)
-    .then(res => dispatch(getLikes()))
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
+export const removeLike = id => async dispatch => {
+  try {
+    await axios.post(`/api/posts/unlike/${id}`);
+    dispatch(getLikes());
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    });
+  }
 };
 
 //Add comment
-export const addComment = (postId, commentData) => dispatch => {
+export const addComment = (postId, commentData) => async dispatch => {
   dispatch(clearErrors());
-  axios
-    .post(`/api/posts/comment/${postId}`, commentData)
-    .then(res =>
-      dispatch({
-        type: GET_POST,
-        payload: res.data
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
+  try {
+    const res = await axios.post(`/api/posts/comment/${postId}`, commentData);
+    dispatch({
+      type: GET_POST,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    });
+  }
 };
 
 // Delete Comment
-export const deleteComment = (postId, commentId) => dispatch => {
+export const deleteComment = (postId, commentId) => async dispatch => {
   dispatch(showModal());
-  axios
-    .delete(`/api/posts/comment/${postId}/${commentId}`)
-    .then(res =>
-      dispatch({
-        type: GET_POST,
-        payload: res.data
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
+  try {
+    const res = await axios.delete(`/api/posts/comment/${postId}/${commentId}`);
+    dispatch({
+      type: GET_POST,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    });
+  }
 };
 
 //Set Loading state
