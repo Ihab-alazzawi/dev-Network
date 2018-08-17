@@ -114,7 +114,7 @@ class PostItem extends Component {
                           type="button"
                           className="btn btn-light rounded-0 border-bottom border-dark border-right-0 border-left-0 border-top-0 mr-1 ml-2"
                         >
-                          Edit
+                          <i className="fas fa-edit" />
                         </button>
                         <Modal
                           deleteHandle={this.deleteHandle.bind(this, post._id)}

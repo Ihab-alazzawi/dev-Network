@@ -46,7 +46,7 @@ class Education extends Component {
             deleteHandle={this.deleteHandle}
             openModalHandle={this.openModalHandle}
             closeModalHandle={this.closeModalHandle}
-            modalButton="Delete"
+            modalButton="X"
           />
         </td>
       </tr>
