@@ -229,7 +229,7 @@ class EditProfile extends Component {
     return (
       <div className="container">
         <div className="row justify-content-center">
-          <div className="animated fadeIn col-8 m-auto">
+          <div className="animated fadeIn col-md-8 m-auto">
             <Link
               to="/dashboard"
               className="btn btn-light mb-3 float-left rounded-0 border-right-0 border-left-0 border-top-0 border-dark"
