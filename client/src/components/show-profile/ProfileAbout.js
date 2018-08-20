@@ -21,7 +21,7 @@ const ProfileAbout = props => {
             {firstName}
             's Bio
           </h3>
-          <p className="lead text-secondary">
+          <p className="lead text-secondary text-justify">
             {isEmpty(profile.bio) ? (
               <span>{firstName} dose not have a Bio</span>
             ) : (
