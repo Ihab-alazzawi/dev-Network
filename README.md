@@ -87,6 +87,10 @@ Social network for software developers, FullStack project built with MERN stack.
      <td>-</td>
      <td>Bootstrap</td>
     </tr>
+     <tr>
+     <td>-</td>
+     <td>GitHub API</td>
+    </tr>
 </table>
 
 ## Screenshots
